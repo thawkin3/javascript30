@@ -21,3 +21,7 @@ My solutions for the JavaScript 30 Day Challenge.
 4. [Array Cardio Day 1](http://tylerhawkins.info/javascript30/04-Array-Cardio-Day-1/)
 
     Takeaways: Know your array helpers. DOM APIs like `querySelectorAll` return a collection of nodes (in this case, DOM elements) in a `NodeList`, which is somewhat similar to an array but doesn't have all the methods that the `Array` prototype does. For example, you can't call `reduce` on a `NodeList`. You first need to convert the `NodeList` to an array, which can be done with `Array.from()`. `reduce()` is an efficient way to combine a `map()` and `filter()` so that you don't have to loop through the array twice.
+
+5. [Flex Panel Gallery](http://tylerhawkins.info/javascript30/05-Flex-Panel-Gallery/)
+
+	Takeaways: Flexbox is great for positioning elements! Transitions look even cooler when you use a cubic-bezier timing function. The transitionend event is only helpful if you can avoid having the transition called multiple times. For example, the panels grow and shrink in this demo, so unless you disable the clicking during the transition, you can get into a weird state if someone clicks multiple times. I solved the problem with CSS transitions alone, and you can see if you click on a panel rapidly it is handled well. You can include orientation specific CSS on mobile devices using media queries. In my case, I only show the panels when the device is in landscape orientation.
