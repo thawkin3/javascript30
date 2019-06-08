@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Type Ahead 👀</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+  </head>
+  <body>
+    <h1>Cities Type Ahead</h1>
+    <form id="search-form" class="search-form">
+      <label>Search by City or State</label>
+      <input
+        type="text"
+        id="search"
+        name="search"
+        class="search"
+        placeholder="City or State"
+        autocomplete="off"
+      />
+      <ul class="suggestions"></ul>
+    </form>
+    <p class="error-message"></p>
+    <script>
+      const endpoint = './cities.json';
+      let cities = [];
+      fetch(endpoint)
+        .then(response => response.json())
+        .then(data => cities = data)
+        .catch(() => {
+          document.querySelector('.error-message').textContent = 'Error fetching data! Please try again later.';
+        });
+
+      function findMatches(searchTerm, cities) {
+        return cities.filter(place => {
+          const searchRegex = new RegExp(searchTerm, 'gi');
+          return place.city.match(searchRegex) || place.state.match(searchRegex);
+        });
+      }
+
+      function formatNumberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      }
+
+      function showResults() {
+        if (!this.value || !this.value.trim()) {
+          suggestions.innerHTML = '';
+          return;
+        }
+
+        const searchTerm = this.value.trim();
+
+        const filteredCitiesResults = findMatches(searchTerm, cities);
+        const htmlOutput = filteredCitiesResults.map(place => {
+          const searchRegex = new RegExp(searchTerm, 'gi');
+          const cityName = place.city.replace(searchRegex, `<span class="hl">${searchTerm}</span>`);
+          const stateName = place.state.replace(searchRegex, `<span class="hl">${searchTerm}</span>`);
+          return `
+            <li>
+              <span class="name">${cityName}, ${stateName}</span>
+              <span class="population">${formatNumberWithCommas(place.population)}</span>
+            </li>
+          `;
+        }).join('');
+        suggestions.innerHTML = htmlOutput;
+      }
+
+      function handleSearch(e) {
+        e.preventDefault();
+      }
+
+      const suggestions = document.querySelector('.suggestions');
+
+      document.querySelector('input.search').addEventListener('input', showResults);
+      document.querySelector('#search-form').addEventListener('submit', handleSearch);
+    </script>
+  </body>
+</html>

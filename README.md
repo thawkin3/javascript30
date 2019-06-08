@@ -25,3 +25,7 @@ My solutions for the JavaScript 30 Day Challenge.
 5. [Flex Panel Gallery](http://tylerhawkins.info/javascript30/05-Flex-Panel-Gallery/)
 
 	Takeaways: Flexbox is great for positioning elements! Transitions look even cooler when you use a cubic-bezier timing function. The transitionend event is only helpful if you can avoid having the transition called multiple times. For example, the panels grow and shrink in this demo, so unless you disable the clicking during the transition, you can get into a weird state if someone clicks multiple times. I solved the problem with CSS transitions alone, and you can see if you click on a panel rapidly it is handled well. You can include orientation specific CSS on mobile devices using media queries. In my case, I only show the panels when the device is in landscape orientation.
+
+6. [Type Ahead](http://tylerhawkins.info/javascript30/06-Type-Ahead/)
+
+	Takeaways: When using the fetch API, the first thing you need to do is transform the data with the `.json()` method. Autocomplete dropdowns take a lot of work to be accessible. They need to have proper ARIA roles and attributes, they need to show hover and focus indicators, and they need to be accessible for keyboard-only users.

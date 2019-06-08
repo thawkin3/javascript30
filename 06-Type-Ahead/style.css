@@ -1,32 +1,51 @@
 html {
-  box-sizing: border-box;
   background: #ffc600;
-  font-family: 'helvetica neue';
+  font-family: 'Helvetica Neue';
   font-size: 20px;
   font-weight: 200;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
 }
 
 *, *:before, *:after {
-  box-sizing: inherit;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+
+.error-message {
+  text-align: center;
+  font-size: 2rem;
+}
+
+label {
+  text-align: center;
+  display: block;
 }
 
 input {
   width: 100%;
-  padding: 20px;
+  padding: 1rem;
 }
 
 .search-form {
-  max-width: 400px;
-  margin: 50px auto;
+  width: 20rem;
+  max-width: 100%;
+  margin: 2.5rem auto;
 }
 
 input.search {
   margin: 0;
   text-align: center;
   outline: 0;
-  border: 10px solid #F7F7F7;
-  width: 120%;
-  left: -10%;
+  border: 0.5rem solid #F7F7F7;
   position: relative;
   top: 10px;
   z-index: 2;
@@ -36,10 +55,10 @@ input.search {
 }
 
 .suggestions {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   position: relative;
-  /*perspective: 20px;*/
+  width: 90%;
 }
 
 .suggestions li {
