@@ -29,3 +29,7 @@ My solutions for the JavaScript 30 Day Challenge.
 6. [Type Ahead](http://tylerhawkins.info/javascript30/06-Type-Ahead/)
 
 	Takeaways: When using the fetch API, the first thing you need to do is transform the data with the `.json()` method. Autocomplete dropdowns take a lot of work to be accessible. They need to have proper ARIA roles and attributes, they need to show hover and focus indicators, and they need to be accessible for keyboard-only users.
+
+7. [Array Cardio Day 2](http://tylerhawkins.info/javascript30/04-Array-Cardio-Day-2/)
+
+	Takeaways: Know your array helpers. `some` returns `true` if at least one element in the array meets the search function's criteria. `every` returns `true` if all the elements in the array meet the search function's criteria. `find` returns the first element that meets the search function's criteria or returns `undefined` if none of the elements meet the search function's criteria. `findIndex` returns the index of the first element that meets the search function's criteria or -1 if none of the elements meet the search function's criteria.
