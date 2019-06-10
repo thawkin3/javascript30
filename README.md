@@ -30,6 +30,10 @@ My solutions for the JavaScript 30 Day Challenge.
 
 	Takeaways: When using the fetch API, the first thing you need to do is transform the data with the `.json()` method. Autocomplete dropdowns take a lot of work to be accessible. They need to have proper ARIA roles and attributes, they need to show hover and focus indicators, and they need to be accessible for keyboard-only users.
 
-7. [Array Cardio Day 2](http://tylerhawkins.info/javascript30/04-Array-Cardio-Day-2/)
+7. [Array Cardio Day 2](http://tylerhawkins.info/javascript30/07-Array-Cardio-Day-2/)
 
 	Takeaways: Know your array helpers. `some` returns `true` if at least one element in the array meets the test function's criteria or `false` if none of the elements meet the test function's criteria. `every` returns `true` if all the elements in the array meet the test function's criteria or `false` if even one element doesn't meet the test function's criteria. `find` returns the first element that meets the test function's criteria or returns `undefined` if none of the elements meet the test function's criteria. `findIndex` returns the index of the first element that meets the test function's criteria or -1 if none of the elements meet the test function's criteria.
+
+8. [Fun with HTML5 Canvas](http://tylerhawkins.info/javascript30/08-Fun-with-HTML5-Canvas/)
+
+    Takeaways: Drawing on a canvas is relatively simple. If you change the canvas's `width` attribute, the canvas clears itself. On a device that uses a mouse, the drawing functionality can be achieved with mouse events like `mousedown`, `mousemove`, `mouseup`, and `mouseout`. In order to make the drawing functionality work on touch screen devices, you must implement the corresponding touch events, like `touchstart`, `touchmove`, and `touchend`.
