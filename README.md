@@ -37,3 +37,7 @@ My solutions for the JavaScript 30 Day Challenge.
 8. [Fun with HTML5 Canvas](http://tylerhawkins.info/javascript30/08-Fun-with-HTML5-Canvas/)
 
     Takeaways: Drawing on a canvas is relatively simple. If you change the canvas's `width` attribute, the canvas clears itself. On a device that uses a mouse, the drawing functionality can be achieved with mouse events like `mousedown`, `mousemove`, `mouseup`, and `mouseout`. In order to make the drawing functionality work on touch screen devices, you must implement the corresponding touch events, like `touchstart`, `touchmove`, and `touchend`.
+
+9. [Console Tricks](http://tylerhawkins.info/javascript30/09-Console-Tricks/)
+
+	Takeaways: There are many more ways to write data to the console than just with `console.log`! You can do string interpolation with `%s`, but template literals make that feature a little less exciting. You can style your message with `%c`, which is pretty neat. Other useful methods are `warn`, `error`, `info`, `assert`, `clear`, `dir`, `group`/`groupCollapsed`/`groupEnd`, `count`, `time`/`timeEnd`, and `table`.

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Console Tricks!</title>
+  </head>
+  <body>
+    <h1>Console Tricks</h1>
+    <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+    <button onClick="makeGreen()">Click me!</button>
+
+    <script>
+      (function() {
+        const dogs = [{ name: 'Snickers', age: 2 }, { name: 'Hugo', age: 8 }];
+
+        // from the dev tools, you can flag an element to trigger a breakpoint when "attribute modifications" occur
+        // flag the button element and then click the button to see the breakpoint triggered
+        function makeGreen() {
+          const button = document.querySelector('button');
+          button.style.color = '#BADA55';
+          button.style.fontSize = '50px';
+        }
+
+        // Regular
+        console.log('I am a boring old console log.');
+
+        // Interpolated
+        console.log('The current time is %s. What a great moment.', (new Date()).toLocaleTimeString());
+
+        // Styled
+        console.log('%c Look, I am styled!', 'color: deeppink; font-weight: bold; font-size: 200%;');
+
+        // warning!
+        console.warn('Warning! Warning!');
+
+        // Error :|
+        console.error('Error! Everything is broken.');
+
+        // Info
+        console.info('Fun fact for the day: Snails can sleep for 3 years.');
+
+        // Testing
+        console.assert(1 % 2 === 0, '1 is not an even number');
+
+        // clearing
+        // console.clear(); // commented out so we don't clear anything for now
+
+        // Viewing DOM Elements
+        const p = document.querySelector('p');
+        console.log(p);
+        console.dir(p); // much better!
+
+        // Grouping together
+        dogs.forEach(dog => {
+          console.groupCollapsed(`${dog.name}`);
+          console.log(`This is ${dog.name}`);
+          console.log(`${dog.name} is ${dog.age} years old`);
+          console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+          console.groupEnd(`${dog.name}`);
+        });
+
+        // counting
+        const letters = ['a', 'b', 'a', 'b', 'b', 'c', 'a', 'a', 'a', 'a', 'a'];
+        letters.forEach(letter => console.count(letter));
+
+        // timing
+        console.time('fetching data');
+        fetch('https://api.github.com/users/thawkin3')
+          .then(data => data.json())
+          .then(data => {
+            console.timeEnd('fetching data');
+            console.log(data);
+          });
+
+        // table
+        console.table(dogs);
+      })();
+    </script>
+  </body>
+</html>
