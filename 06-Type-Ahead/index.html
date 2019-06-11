@@ -22,57 +22,59 @@
     </form>
     <p class="error-message"></p>
     <script>
-      const endpoint = './cities.json';
-      let cities = [];
-      fetch(endpoint)
-        .then(response => response.json())
-        .then(data => cities = data)
-        .catch(() => {
-          document.querySelector('.error-message').textContent = 'Error fetching data! Please try again later.';
-        });
+      (function () {
+        const endpoint = './cities.json';
+        let cities = [];
+        fetch(endpoint)
+          .then(response => response.json())
+          .then(data => cities = data)
+          .catch(() => {
+            document.querySelector('.error-message').textContent = 'Error fetching data! Please try again later.';
+          });
 
-      function findMatches(searchTerm, cities) {
-        return cities.filter(place => {
-          const searchRegex = new RegExp(searchTerm, 'gi');
-          return place.city.match(searchRegex) || place.state.match(searchRegex);
-        });
-      }
-
-      function formatNumberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      }
-
-      function showResults() {
-        if (!this.value || !this.value.trim()) {
-          suggestions.innerHTML = '';
-          return;
+        function findMatches(searchTerm, cities) {
+          return cities.filter(place => {
+            const searchRegex = new RegExp(searchTerm, 'gi');
+            return place.city.match(searchRegex) || place.state.match(searchRegex);
+          });
         }
 
-        const searchTerm = this.value.trim();
+        function formatNumberWithCommas(x) {
+          return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
 
-        const filteredCitiesResults = findMatches(searchTerm, cities);
-        const htmlOutput = filteredCitiesResults.map(place => {
-          const searchRegex = new RegExp(searchTerm, 'gi');
-          const cityName = place.city.replace(searchRegex, `<span class="hl">${searchTerm}</span>`);
-          const stateName = place.state.replace(searchRegex, `<span class="hl">${searchTerm}</span>`);
-          return `
-            <li>
-              <span class="name">${cityName}, ${stateName}</span>
-              <span class="population">${formatNumberWithCommas(place.population)}</span>
-            </li>
-          `;
-        }).join('');
-        suggestions.innerHTML = htmlOutput;
-      }
+        function showResults() {
+          if (!this.value || !this.value.trim()) {
+            suggestions.innerHTML = '';
+            return;
+          }
 
-      function handleSearch(e) {
-        e.preventDefault();
-      }
+          const searchTerm = this.value.trim();
 
-      const suggestions = document.querySelector('.suggestions');
+          const filteredCitiesResults = findMatches(searchTerm, cities);
+          const htmlOutput = filteredCitiesResults.map(place => {
+            const searchRegex = new RegExp(searchTerm, 'gi');
+            const cityName = place.city.replace(searchRegex, `<span class="hl">${searchTerm}</span>`);
+            const stateName = place.state.replace(searchRegex, `<span class="hl">${searchTerm}</span>`);
+            return `
+              <li>
+                <span class="name">${cityName}, ${stateName}</span>
+                <span class="population">${formatNumberWithCommas(place.population)}</span>
+              </li>
+            `;
+          }).join('');
+          suggestions.innerHTML = htmlOutput;
+        }
 
-      document.querySelector('input.search').addEventListener('input', showResults);
-      document.querySelector('#search-form').addEventListener('submit', handleSearch);
+        function handleSearch(e) {
+          e.preventDefault();
+        }
+
+        const suggestions = document.querySelector('.suggestions');
+
+        document.querySelector('input.search').addEventListener('input', showResults);
+        document.querySelector('#search-form').addEventListener('submit', handleSearch);
+      })();
     </script>
   </body>
 </html>

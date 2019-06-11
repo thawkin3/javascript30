@@ -51,68 +51,70 @@
       <canvas id="drawing-pad" width="800" height="800"></canvas>
     </main>
     <script>
-      let canvas, ctx, isDrawing, lastX, lastY, hue, isLineWidthIncreasing;
-      const maxLineWidth = 50;
-      const minLineWidth = 5;
+      (function() {
+        let canvas, ctx, isDrawing, lastX, lastY, hue, isLineWidthIncreasing;
+        const maxLineWidth = 50;
+        const minLineWidth = 5;
 
-      function init() {
-        // get references to canvas
-        canvas = document.querySelector('#drawing-pad');
-        ctx = canvas.getContext('2d');
-        
-        // initialize full-size canvas
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        function init() {
+          // get references to canvas
+          canvas = document.querySelector('#drawing-pad');
+          ctx = canvas.getContext('2d');
+          
+          // initialize full-size canvas
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
 
-        // initialize config options
-        ctx.lineWidth = maxLineWidth;
-        ctx.strokeStyle = '#BADA55';
-        ctx.lineJoin = 'round';
-        ctx.lineCap = 'round';
+          // initialize config options
+          ctx.lineWidth = maxLineWidth;
+          ctx.strokeStyle = '#BADA55';
+          ctx.lineJoin = 'round';
+          ctx.lineCap = 'round';
 
-        // initialize internal state
-        isDrawing = false;
-        lastX = 0;
-        lastY = 0;
-        hue = 0;
-        isLineWidthIncreasing = true;
-      }
-
-      function draw(e) {
-        if (!isDrawing) { return; }
-
-        ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
-        ctx.beginPath();
-        ctx.moveTo(lastX, lastY);
-        ctx.lineTo(e.offsetX, e.offsetY);
-        ctx.stroke();
-        [lastX, lastY] = [e.offsetX, e.offsetY];
-
-        hue = hue >= 359 ? 0 : hue + 1;
-
-        if (ctx.lineWidth >= maxLineWidth || ctx.lineWidth <= minLineWidth) {
-          isLineWidthIncreasing = !isLineWidthIncreasing;
+          // initialize internal state
+          isDrawing = false;
+          lastX = 0;
+          lastY = 0;
+          hue = 0;
+          isLineWidthIncreasing = true;
         }
 
-        isLineWidthIncreasing ? ctx.lineWidth++ : ctx.lineWidth--;
-      }
+        function draw(e) {
+          if (!isDrawing) { return; }
 
-      function startDrawing(e) {
-        isDrawing = true;
-        [lastX, lastY] = [e.offsetX, e.offsetY];
-      }
+          ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+          ctx.beginPath();
+          ctx.moveTo(lastX, lastY);
+          ctx.lineTo(e.offsetX, e.offsetY);
+          ctx.stroke();
+          [lastX, lastY] = [e.offsetX, e.offsetY];
 
-      function stopDrawing() {
-        isDrawing = false;
-      }
+          hue = hue >= 359 ? 0 : hue + 1;
 
-      init();
+          if (ctx.lineWidth >= maxLineWidth || ctx.lineWidth <= minLineWidth) {
+            isLineWidthIncreasing = !isLineWidthIncreasing;
+          }
 
-      canvas.addEventListener('mousedown', startDrawing);
-      canvas.addEventListener('mousemove', draw);
-      canvas.addEventListener('mouseup', stopDrawing);
-      canvas.addEventListener('mouseout', stopDrawing);
-      window.addEventListener('resize', init);
+          isLineWidthIncreasing ? ctx.lineWidth++ : ctx.lineWidth--;
+        }
+
+        function startDrawing(e) {
+          isDrawing = true;
+          [lastX, lastY] = [e.offsetX, e.offsetY];
+        }
+
+        function stopDrawing() {
+          isDrawing = false;
+        }
+
+        init();
+
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseout', stopDrawing);
+        window.addEventListener('resize', init);
+      })();
     </script>
   </body>
 </html>

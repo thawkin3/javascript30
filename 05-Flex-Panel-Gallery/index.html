@@ -158,12 +158,14 @@
     </div>
 
     <script>
-      function toggleOpen() {
-        this.classList.toggle('open');
-      }
+      (function() {
+        function toggleOpen() {
+          this.classList.toggle('open');
+        }
 
-      const panels = document.querySelectorAll('.panel');
-      panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+        const panels = document.querySelectorAll('.panel');
+        panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+      })();
     </script>
   </body>
 </html>
