@@ -11,11 +11,13 @@
         padding: 0;
         font-size: 16px;
         font-family: 'Helvetica Neue', Arial, sans-serif;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
       }
 
       body {
-        height: 100vh;
-        overflow: hidden;
+        position: fixed;
       }
 
       header {
@@ -41,9 +43,19 @@
         position: relative;
         z-index: 1;
       }
+
+      .noselect {
+        -webkit-touch-callout: none; /* iOS Safari */
+          -webkit-user-select: none; /* Safari */
+          -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Firefox */
+              -ms-user-select: none; /* Internet Explorer/Edge */
+                  user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome and Opera */
+      }
     </style>
   </head>
-  <body>
+  <body class="noselect">
     <header>
       <h1>HTML5 Canvas Drawing Pad</h1>
     </header>
@@ -53,7 +65,7 @@
     <script>
       (function() {
         let canvas, ctx, isDrawing, lastX, lastY, hue, isLineWidthIncreasing;
-        const maxLineWidth = 50;
+        const maxLineWidth = 30;
         const minLineWidth = 5;
 
         function init() {
@@ -79,15 +91,15 @@
           isLineWidthIncreasing = true;
         }
 
-        function draw(e) {
+        function draw(x, y) {
           if (!isDrawing) { return; }
 
           ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
           ctx.beginPath();
           ctx.moveTo(lastX, lastY);
-          ctx.lineTo(e.offsetX, e.offsetY);
+          ctx.lineTo(x, y);
           ctx.stroke();
-          [lastX, lastY] = [e.offsetX, e.offsetY];
+          [lastX, lastY] = [x, y];
 
           hue = hue >= 359 ? 0 : hue + 1;
 
@@ -98,9 +110,37 @@
           isLineWidthIncreasing ? ctx.lineWidth++ : ctx.lineWidth--;
         }
 
-        function startDrawing(e) {
+        function getTouchCoordinates(callback, e) {
+          e.preventDefault();
+          if (e && e.touches) {
+            if (e.touches.length == 1) { // Only deal with one finger
+              const touch = e.touches[0]; // Get the information for finger #1
+              const touchX = touch.pageX - touch.target.offsetLeft;
+              const touchY = touch.pageY - touch.target.offsetTop;
+              callback(touchX, touchY);
+            }
+          }
+        }
+
+        function drawWithMouse(e) {
+          draw(e.offsetX, e.offsetY);
+        }
+
+        function drawWithTouchScreen(e) {
+          getTouchCoordinates(draw, e);
+        }
+
+        function startDrawing(x, y) {
           isDrawing = true;
-          [lastX, lastY] = [e.offsetX, e.offsetY];
+          [lastX, lastY] = [x, y];
+        }
+
+        function startDrawingWithMouse(e) {
+          startDrawing(e.offsetX, e.offsetY);
+        }
+
+        function startDrawingWithTouchScreen(e) {
+          getTouchCoordinates(startDrawing, e);
         }
 
         function stopDrawing() {
@@ -109,11 +149,15 @@
 
         init();
 
-        canvas.addEventListener('mousedown', startDrawing);
-        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mousedown', startDrawingWithMouse);
+        canvas.addEventListener('mousemove', drawWithMouse);
         canvas.addEventListener('mouseup', stopDrawing);
         canvas.addEventListener('mouseout', stopDrawing);
+        canvas.addEventListener('touchstart', startDrawingWithTouchScreen);
+        canvas.addEventListener('touchmove', drawWithTouchScreen)
+        canvas.addEventListener('touchend', stopDrawing);
         window.addEventListener('resize', init);
+        window.addEventListener('orientationchange', init);
       })();
     </script>
   </body>
