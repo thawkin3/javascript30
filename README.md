@@ -41,3 +41,8 @@ My solutions for the JavaScript 30 Day Challenge.
 9. [Console Tricks](http://tylerhawkins.info/javascript30/09-Console-Tricks/)
 
 	Takeaways: There are many more ways to write data to the console than just with `console.log`! You can do string interpolation with `%s`, but template literals make that feature a little less exciting. You can style your message with `%c`, which is pretty neat. Other useful methods are `warn`, `error`, `info`, `assert`, `clear`, `dir`, `group`/`groupCollapsed`/`groupEnd`, `count`, `time`/`timeEnd`, and `table`.
+
+10. [Hold Shift and Check Checkboxes](http://tylerhawkins.info/javascript30/10-Hold-Shift-and-Check-Checkboxes/)
+
+    Takeaways: Shift-clicking to select multiple boxes is a really nice feature to help make the user experience better when dealing with long lists. When implementing this functionality you need to handle both the selecting and deselecting of multiple checkboxes. It's important that inputs have labels on them so that both the checkbox itself and the label text are clickable. You can disable text highlighting with the CSS rule `user-select: none`.
+
