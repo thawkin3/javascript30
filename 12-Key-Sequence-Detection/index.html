@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Key Sequence Detection</title>
+
+    <style>
+      html, body {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        padding: 10px;
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .easter-egg {
+        margin-top: 20px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Key Sequence Detection</h1>
+    <p>Enter the Konami Code to Unlock a Surprise!</p>
+    <img src="./easter-egg.gif" class="easter-egg" />
+    <script>
+      (function() {
+        const pressedKeys = [];
+        // Up Up Down Down Left Right Left Right B A
+        const secretCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+        const secretCodeString = secretCode.join('');
+        const secretCodeLength = secretCode.length;
+
+        window.addEventListener('keyup', (e) => {
+          pressedKeys.push(e.keyCode);
+          if (pressedKeys.length > secretCodeLength) {
+            pressedKeys.shift();
+          }
+          if (pressedKeys.join('').includes(secretCodeString)) {
+            document.querySelector('.easter-egg').style.display = 'block';
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
