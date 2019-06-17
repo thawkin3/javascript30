@@ -1,26 +1,23 @@
 html {
   box-sizing: border-box;
-  background: url('http://wes.io/hx9M/oh-la-la.jpg') center no-repeat;
+  background: url('./restaurant.jpg') center no-repeat;
   background-size: cover;
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   text-align: center;
   font-family: Futura,"Trebuchet MS",Arial,sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 20px;
 }
 
 *, *:before, *:after {
   box-sizing: inherit; 
-}
-
-svg {
-  fill:white;
-  background: rgba(0,0,0,0.1);
-  padding: 20px;
-  border-radius: 50%;
-  width: 200px;
-  margin-bottom: 50px;
 }
 
 .wrapper {
@@ -30,10 +27,20 @@ svg {
   box-shadow: 0 0 0 10px rgba(0,0,0,0.1);
 }
 
+header {
+  margin-bottom: 20px;
+}
+
+h1,
 h2 {
   text-align: center;
   margin: 0;
   font-weight: 200;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 16px;
 }
 
 .plates {
@@ -55,8 +62,18 @@ h2 {
   cursor: pointer;
 }
 
+.plates input:focus + label {
+  outline: 1px dotted blue;
+  outline-offset: 4px;
+}
+
 .plates input {
-  display: none;
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .plates input + label:before {
@@ -68,12 +85,24 @@ h2 {
   content: '🌮';
 }
 
-.add-items {
+#tapas-form {
   margin-top: 20px;
 }
 
-.add-items input {
+#tapas-form input,
+#tapas-form button {
   padding: 10px;
-  outline: 0;
   border: 1px solid rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+.helper-buttons {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.helper-buttons button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
 }

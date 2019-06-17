@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LocalStorage</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Local Tapas</h1>
+        <h2>(And Local Storage)</h2>
+      </header>
+      <main>
+        <ul class="plates">
+          <li>Loading Tapas...</li>
+        </ul>
+        <form class="add-items" id="tapas-form">
+          <input type="text" name="item" placeholder="Item Name" required maxlength="30" />
+          <input type="submit" value="+ Add Item" />
+          <div class="helper-buttons">
+            <button type="button" class="select-all">Select all items</button>
+            <button type="button" class="deselect-all">Deselect all items</button>
+            <button type="button" class="clear-all">Clear all items</button>
+          </div>
+        </form>
+      </main>
+    </div>
+
+    <script>
+      (function() {
+        const tapasForm = document.querySelector('#tapas-form');
+        const itemsList = document.querySelector('.plates');
+        const selectAllButton = document.querySelector('.select-all');
+        const deselectAllButton = document.querySelector('.deselect-all');
+        const clearAllButton = document.querySelector('.clear-all');
+
+        let items = JSON.parse(localStorage.getItem('items')) || [];
+
+        function addItem(e) {
+          e.preventDefault();
+          const text = (this.querySelector('[name=item]')).value;
+          const item = {
+            text,
+            done: false
+          };
+
+          items.push(item);
+          populateList(items, itemsList);
+          this.reset();
+        }
+
+        function populateList(plates = [], platesList) {
+          if (plates.length === 0) {
+            platesList.innerHTML = '<li style="display: block; text-align: center;">No items to show.</li>';
+          } else {
+            platesList.innerHTML = plates.map((plate, i) => {
+              return `
+                <li>
+                  <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
+                  <label for="item${i}">${plate.text}</label>
+                </li>
+              `;
+            }).join('');
+          }
+          localStorage.setItem('items', JSON.stringify(plates));
+        }
+
+        function toggleDone(e) {
+          if (!e.target.matches('input[type="checkbox"]')) return; // skip this unless it's an input
+          const el = e.target;
+          const index = el.dataset.index;
+          items[index].done = !items[index].done;
+          populateList(items, itemsList);
+          document.querySelector(`input[data-index="${index}"]`).focus();
+        }
+
+        function selectAllItems() {
+          items.forEach(item => item.done = true);
+          populateList(items, itemsList);
+        }
+
+        function deselectAllItems() {
+          items.forEach(item => item.done = false);
+          populateList(items, itemsList);
+        }
+
+        function clearAllItems() {
+          items = [];
+          populateList(items, itemsList);
+        }
+
+        tapasForm.addEventListener('submit', addItem);
+        itemsList.addEventListener('click', toggleDone);
+        selectAllButton.addEventListener('click', selectAllItems);
+        deselectAllButton.addEventListener('click', deselectAllItems);
+        clearAllButton.addEventListener('click', clearAllItems);
+
+        populateList(items, itemsList);
+      })();
+    </script>
+  </body>
+</html>
+

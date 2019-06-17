@@ -61,3 +61,7 @@ My solutions for the JavaScript 30 Day Challenge.
 14. [JavaScript References vs. Copying](http://tylerhawkins.info/javascript30/14-JavaScript-References-vs-Copying/)
 
     Takeaways: Numbers, strings, and booleans are passed by copy (or by value). Arrays and objects are passed by reference, so you need to be sure to actually make a copy of the array or object if you want to modify the copy without also modifying the original. You can make copies of arrays with methods like `slice`, `concat`, `Array.from`, or the spread operator (`...`). You can make copies of objects with methods like `Object.assign` or the spread operator (`...`). One thing to note is that all these methods make shallow clones, meaning that they only make copies one level deep. So if you have a deeply nested object, you make a copy of it, and then you modify a value on the copied object that is on the second level or deeper, it will also modify the value of the original object too.
+
+15. [LocalStorage](http://tylerhawkins.info/javascript30/15-LocalStorage/)
+
+    Takeaways: Local storage is a key-value store that only supports strings. If you want to store arrays or objects, you need to stringify them with `JSON.stringify` and then store that value. When retrieving the value, you can then call `JSON.parse` to turn your value back into an array or object.
