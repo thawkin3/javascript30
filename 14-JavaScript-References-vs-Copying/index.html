@@ -9,128 +9,130 @@
     <h1>JS Reference VS Copy</h1>
     <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
     <script>
-      /*********************************
-      ** strings, numbers and booleans
-      *********************************/
-      // these are all passed by copy (or by value),
-      // so changing one variable's value doesn't affect the other's value
-      let age1 = 100;
-      let age2 = age1;
-      console.log(age1, age2); // 100, 100
-      age1 = 200;
-      console.log(age1, age2); // 200, 100
+      (function() {
+        /*********************************
+        ** strings, numbers and booleans
+        *********************************/
+        // these are all passed by copy (or by value),
+        // so changing one variable's value doesn't affect the other's value
+        let age1 = 100;
+        let age2 = age1;
+        console.log(age1, age2); // 100, 100
+        age1 = 200;
+        console.log(age1, age2); // 200, 100
 
-      let name1 = 'Tyler';
-      let name2 = name1;
-      console.log(name1, name2); // Tyler, Tyler
-      name1 = 'TJ';
-      console.log(name1, name2); // TJ, Tyler
+        let name1 = 'Tyler';
+        let name2 = name1;
+        console.log(name1, name2); // Tyler, Tyler
+        name1 = 'TJ';
+        console.log(name1, name2); // TJ, Tyler
 
-      let isShowing1 = true;
-      let isShowing2 = isShowing1;
-      console.log(isShowing1, isShowing2); // true, true
-      isShowing1 = false;
-      console.log(isShowing1, isShowing2); // false, true
+        let isShowing1 = true;
+        let isShowing2 = isShowing1;
+        console.log(isShowing1, isShowing2); // true, true
+        isShowing1 = false;
+        console.log(isShowing1, isShowing2); // false, true
 
-      /*********************************
-      ** arrays
-      *********************************/
-      // Let's say we have an array
-      // and we want to make a copy of it.
-      const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+        /*********************************
+        ** arrays
+        *********************************/
+        // Let's say we have an array
+        // and we want to make a copy of it.
+        const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
-      // You might think we can just do something like this:
-      const team = players;
-      console.log(players, team); // both look the same
+        // You might think we can just do something like this:
+        const team = players;
+        console.log(players, team); // both look the same
 
-      // however what happens when we update that array?
-      team[3] = 'Lux';
+        // however what happens when we update that array?
+        team[3] = 'Lux';
 
-      // now here is the problem!
-      console.log(players, team);
-      // oh no - we have edited the original array too!
-      // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+        // now here is the problem!
+        console.log(players, team);
+        // oh no - we have edited the original array too!
+        // Why? It's because that is an array reference, not an array copy. They both point to the same array!
 
-      // So, how do we fix this? We take a copy instead!
-      // there are lots of ways to do this. for example:
-      const players2 = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
-      const team2 = players2.slice();
-      const team3 = [].concat(players2);
-      const team4 = [...players2];
-      const team5 = Array.from(players2);
+        // So, how do we fix this? We take a copy instead!
+        // there are lots of ways to do this. for example:
+        const players2 = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+        const team2 = players2.slice();
+        const team3 = [].concat(players2);
+        const team4 = [...players2];
+        const team5 = Array.from(players2);
 
-      // now when we update it, the original one isn't changed
-      // these are all separate arrays
-      team2[3] = 'Ty';
-      team3[3] = 'Tyler';
-      team4[3] = 'TJ';
-      team5[3] = 'T-Money';
-      console.log(players2, team2, team3, team4, team5); // good! all different
+        // now when we update it, the original one isn't changed
+        // these are all separate arrays
+        team2[3] = 'Ty';
+        team3[3] = 'Tyler';
+        team4[3] = 'TJ';
+        team5[3] = 'T-Money';
+        console.log(players2, team2, team3, team4, team5); // good! all different
 
-      /*********************************
-      ** objects
-      *********************************/
-      // The same thing goes for objects, they are passed by reference.
-      // let's say we have a person object
-      const person = {
-        name: 'Tyler Hawkins',
-        age: 80,
-      };
+        /*********************************
+        ** objects
+        *********************************/
+        // The same thing goes for objects, they are passed by reference.
+        // let's say we have a person object
+        const person = {
+          name: 'Tyler Hawkins',
+          age: 80,
+        };
 
-      // and think we make a copy:
-      const captain = person;
-      console.log(person, captain); // both look the same
-      captain.age = 99;
-      console.log(person, captain);
-      // oh no! we modified the original object too
-      // that's because objects are passed by reference
+        // and think we make a copy:
+        const captain = person;
+        console.log(person, captain); // both look the same
+        captain.age = 99;
+        console.log(person, captain);
+        // oh no! we modified the original object too
+        // that's because objects are passed by reference
 
-      // how do we make a copy instead?
-      const person2 = {
-        name: 'Tyler Hawkins',
-        age: 80,
-      };
-      // we can use Object.assign()
-      const cap2 = Object.assign({}, person2, { number: 99, age: 12 });
-      console.log(person2, cap2);
+        // how do we make a copy instead?
+        const person2 = {
+          name: 'Tyler Hawkins',
+          age: 80,
+        };
+        // we can use Object.assign()
+        const cap2 = Object.assign({}, person2, { number: 99, age: 12 });
+        console.log(person2, cap2);
 
-      // or we can use the spread operator
-      const cap3 = { ...person2, age: 50 };
-      console.log(person2, cap3);
+        // or we can use the spread operator
+        const cap3 = { ...person2, age: 50 };
+        console.log(person2, cap3);
 
-      // Things to note - this is only 1 level deep - both for Arrays and Objects.
-      // this is because these are "shallow copies", not "deep copies"
-      // lodash has a cloneDeep method, but you should think twice before using it
-      // (performance reasons, and do you really need it).
-      const tyler = {
-        name: 'Tyler',
-        age: 100,
-        social: {
-          twitter: '@tmoney',
-          facebook: 'tmoney.developer'
-        }
-      };
+        // Things to note - this is only 1 level deep - both for Arrays and Objects.
+        // this is because these are "shallow copies", not "deep copies"
+        // lodash has a cloneDeep method, but you should think twice before using it
+        // (performance reasons, and do you really need it).
+        const tyler = {
+          name: 'Tyler',
+          age: 100,
+          social: {
+            twitter: '@tmoney',
+            facebook: 'tmoney.developer'
+          }
+        };
 
-      console.log(tyler);
+        console.log(tyler);
 
-      const tyler2 = Object.assign({}, tyler);
-      tyler2.social.twitter = '@changedValue';
-      console.log(tyler, tyler2);
-      // on ho! both objects have the twitter value changed!
-      // this is because this is a shallow clone, and we changed a value two levels deep
+        const tyler2 = Object.assign({}, tyler);
+        tyler2.social.twitter = '@changedValue';
+        console.log(tyler, tyler2);
+        // on ho! both objects have the twitter value changed!
+        // this is because this is a shallow clone, and we changed a value two levels deep
 
-      // one option is to use JSON.stringify and JSON.parse, but that is not very performant
-      const tyler3 = {
-        name: 'Tyler',
-        age: 100,
-        social: {
-          twitter: '@tmoney',
-          facebook: 'tmoney.developer'
-        }
-      };
-      const tyler4 = JSON.parse(JSON.stringify(tyler3));
-      tyler4.social.twitter = '@changedAgain';
-      console.log(tyler3, tyler4); // good! the original object was unchanged
+        // one option is to use JSON.stringify and JSON.parse, but that is not very performant
+        const tyler3 = {
+          name: 'Tyler',
+          age: 100,
+          social: {
+            twitter: '@tmoney',
+            facebook: 'tmoney.developer'
+          }
+        };
+        const tyler4 = JSON.parse(JSON.stringify(tyler3));
+        tyler4.social.twitter = '@changedAgain';
+        console.log(tyler3, tyler4); // good! the original object was unchanged
+      })();
     </script>
   </body>
 </html>

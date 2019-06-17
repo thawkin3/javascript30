@@ -9,60 +9,62 @@
     <h1>Array Cardio 💪💪 Day 2</h1>
     <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
     <script>
-      // ## Array Cardio Day 2
+      (function() {
+        // ## Array Cardio Day 2
 
-      const people = [
-        { name: 'Wes', year: 1988 },
-        { name: 'Kait', year: 1986 },
-        { name: 'Irv', year: 1970 },
-        { name: 'Lux', year: 2015 }
-      ];
+        const people = [
+          { name: 'Wes', year: 1988 },
+          { name: 'Kait', year: 1986 },
+          { name: 'Irv', year: 1970 },
+          { name: 'Lux', year: 2015 }
+        ];
 
-      const comments = [
-        { text: 'Love this!', id: 523423 },
-        { text: 'Super good', id: 823423 },
-        { text: 'You are the best', id: 2039842 },
-        { text: 'Ramen is my fav food ever', id: 123523 },
-        { text: 'Nice Nice Nice!', id: 542328 }
-      ];
+        const comments = [
+          { text: 'Love this!', id: 523423 },
+          { text: 'Super good', id: 823423 },
+          { text: 'You are the best', id: 2039842 },
+          { text: 'Ramen is my fav food ever', id: 123523 },
+          { text: 'Nice Nice Nice!', id: 542328 }
+        ];
 
-      // `some` and `every` Checks
-      const is19OrOlder = person => (new Date()).getFullYear() - person.year >= 19;
+        // `some` and `every` Checks
+        const is19OrOlder = person => (new Date()).getFullYear() - person.year >= 19;
 
-      // Array.prototype.some() // is at least one person 19 or older?
-      const areSomePeople19OrOlder = people.some(is19OrOlder);
-      console.log('1.', areSomePeople19OrOlder);
+        // Array.prototype.some() // is at least one person 19 or older?
+        const areSomePeople19OrOlder = people.some(is19OrOlder);
+        console.log('1.', areSomePeople19OrOlder);
 
-      // Array.prototype.every() // is everyone 19 or older?
-      const isEveryPerson19OrOlder = people.every(is19OrOlder);
-      console.log('2.', isEveryPerson19OrOlder);
+        // Array.prototype.every() // is everyone 19 or older?
+        const isEveryPerson19OrOlder = people.every(is19OrOlder);
+        console.log('2.', isEveryPerson19OrOlder);
 
-      // `find` and `findIndex` checks
-      const findComment823423 = comment => comment.id === 823423;
+        // `find` and `findIndex` checks
+        const findComment823423 = comment => comment.id === 823423;
 
-      // Array.prototype.find()
-      // Find is like filter, but instead returns just the one you are looking for
-      // find the comment with the ID of 823423
-      const commentIWant = comments.find(findComment823423);
-      console.log('3.', commentIWant);
+        // Array.prototype.find()
+        // Find is like filter, but instead returns just the one you are looking for
+        // find the comment with the ID of 823423
+        const commentIWant = comments.find(findComment823423);
+        console.log('3.', commentIWant);
 
-      // Array.prototype.findIndex()
-      // Find the comment with this ID
-      // delete the comment with the ID of 823423
-      
-      // solution 1:
-      const indexOfCommentIWant = comments.findIndex(findComment823423);
-      const filteredComments = [
-        ...comments.slice(0, indexOfCommentIWant),
-        ...comments.slice(indexOfCommentIWant + 1),
-      ];
-      console.log('4a.');
-      console.table(filteredComments);
+        // Array.prototype.findIndex()
+        // Find the comment with this ID
+        // delete the comment with the ID of 823423
+        
+        // solution 1:
+        const indexOfCommentIWant = comments.findIndex(findComment823423);
+        const filteredComments = [
+          ...comments.slice(0, indexOfCommentIWant),
+          ...comments.slice(indexOfCommentIWant + 1),
+        ];
+        console.log('4a.');
+        console.table(filteredComments);
 
-      // solution 2:
-      const filteredComments2 = comments.filter(comment => !findComment823423(comment));
-      console.log('4b.');
-      console.table(filteredComments2);
+        // solution 2:
+        const filteredComments2 = comments.filter(comment => !findComment823423(comment));
+        console.log('4b.');
+        console.table(filteredComments2);
+      })();
     </script>
   </body>
 </html>
