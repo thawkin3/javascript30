@@ -53,3 +53,8 @@ My solutions for the JavaScript 30 Day Challenge.
 12. [Key Sequence Detection](http://tylerhawkins.info/javascript30/12-Key-Sequence-Detection/)
 
 	Takeaways: Nothing too exciting here. Key loggers are pretty simply to make, just listen to the `keyup` event and record the event's `key` or `keyCode` value.
+
+13. [Slide in on Scroll](http://tylerhawkins.info/javascript30/13-Slide-in-on-Scroll/)
+
+	Takeaways: Introducing images or other content with subtle animations can be a nice touch to your website when done properly. When handling scroll events (or any event that fires repeatedly over a short period of time), you can choose to debounce or throttle your function so that it runs less frequently. A debounced function sets up a timer that gets reset every time the function is called, so your wrapped function only executes once the timer has been able to fully run. A throttled function on the other hand simply limits how often the wrapped function can be called and does not reset its internal timer when the function is called repeatedly. For example, if you are listening to the scroll event with a throttled function that is limited to run every 200ms, and you scrolled non-stop for about one second, the throttled function would be called 5 times. A debounced function would have only been called once, 200ms after you had stopped scrolling.
+
