@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mouse Move Shadow</title>
+
+    <style>
+        html {
+          color: black;
+          font-family: sans-serif;
+          margin: 0;
+          box-sizing: border-box;
+        }
+    
+        body {
+          margin: 0;
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          height: 100vh;
+        }
+
+        * {
+          box-sizing: inherit;
+        }
+
+        header {
+          text-align: center;
+        }
+    
+        .hero {
+          flex-grow: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+        }
+    
+        .whoa {
+          font-size: 100px;
+        }
+        </style>
+  </head>
+  <body>
+    <header>
+      <h1>Mouse Move Shadow</h1>
+      <p>(Move your move over and around the text below.)</p>
+    </header>
+    <div class="hero">
+        <p class="whoa">🔥WOAH🔥</p>
+    </div>
+    <script>
+      (function() {
+        const mainContainer = document.querySelector('.hero');
+        const textToGetShadow = mainContainer.querySelector('.whoa');
+        const walkScalar = 40;
+
+        function createShadow(e) {
+          const { offsetWidth: containerWidth, offsetHeight: containerHeight } = mainContainer;
+          
+          // x and y coordinates of mouse in relation to top-left corner of the container
+          let { offsetX: x, offsetY: y } = e;
+
+          // "this" is always the container, since that's what we added this event listener to
+          // e.target is the element that you are actually moused over,
+          // which can also be anythig inside this ".hero" container.
+          // If that's the case that you're hovering over some other element inside the ".hero" container,
+          // then the offsetX and offsetY is calculated relative to this hovered element.
+          // To correct for this, you then need to add in the hovered element's offset position from the ".hero" container.
+          if (this !== e.target) {
+            x = x + e.target.offsetLeft;
+            y = y + e.target.offsetTop;
+          }
+          
+          const xWalk = Math.round(((x / containerWidth) * walkScalar) - (walkScalar / 2));
+          const yWalk = Math.round(((y / containerHeight) * walkScalar) - (walkScalar / 2));
+
+          textToGetShadow.style.textShadow = `${xWalk}px ${yWalk}px 10px rgba(0,0,0,0.4)`;
+        }
+
+        mainContainer.addEventListener('mousemove', createShadow);
+      })();
+    </script>
+  </body>
+</html>

@@ -65,3 +65,7 @@ My solutions for the JavaScript 30 Day Challenge.
 15. [LocalStorage](http://tylerhawkins.info/javascript30/15-LocalStorage/)
 
     Takeaways: Local storage is a key-value store that only supports strings. If you want to store arrays or objects, you need to stringify them with `JSON.stringify` and then store that value. When retrieving the value, you can then call `JSON.parse` to turn your value back into an array or object.
+
+16. [Mouse Move Shadow](http://tylerhawkins.info/javascript30/16-Mouse-Move-Shadow/)
+
+    Takeaways: When calculating the X and Y coordinates, there are a lot of things to take into account. `HTMLElement.offsetHeight` and `HTMLElement.offsetWidth` are the element's layout height and width. `HTMLElement.offsetLeft` and `HTMLElement.offsetTop` are the number of pixels that the upper left corner (or top, respectively) of the current element is offset to the left (or top, respectively) within the `HTMLElement.offsetParent` node. `event.target.offsetX` and `event.target.offsetY` from the `MouseEvent` are the offset between the mouse pointer and the left (or top, respectively) edge of the target element.
