@@ -69,3 +69,7 @@ My solutions for the JavaScript 30 Day Challenge.
 16. [Mouse Move Shadow](http://tylerhawkins.info/javascript30/16-Mouse-Move-Shadow/)
 
     Takeaways: When calculating the X and Y coordinates, there are a lot of things to take into account. `HTMLElement.offsetHeight` and `HTMLElement.offsetWidth` are the element's layout height and width. `HTMLElement.offsetLeft` and `HTMLElement.offsetTop` are the number of pixels that the upper left corner (or top, respectively) of the current element is offset to the left (or top, respectively) within the `HTMLElement.offsetParent` node. `event.target.offsetX` and `event.target.offsetY` from the `MouseEvent` are the offset between the mouse pointer and the left (or top, respectively) edge of the target element.
+
+17. [Sort Without Articles](http://tylerhawkins.info/javascript30/17-Sort-Without-Articles/)
+
+    Takeaways: Nothing too exciting here. RegEx is a useful thing to know and can be used in a string's `replace` method. Strings can be compared with operators like `<` and `>`. When doing string comparisons, earlier letters like "c" are evaluated as being "less than" later letters like "t". Uppercase letters are evaluated as being "less than" lowercase letters (meaning uppercase letters come first). So, to do an impartial comparison, it can be useful to convert your strings to all lowercase or all uppercase before doing the comparison.

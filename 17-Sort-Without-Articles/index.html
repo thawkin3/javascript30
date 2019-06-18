@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sort Without Articles</title>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: sans-serif;
+        background: url("./forest.jpeg");
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      h1 {
+        margin-bottom: 0;
+        text-align: center;
+      }
+
+      h1 + p {
+        margin-top: 5px;
+        margin-bottom: 50px;
+      }
+
+      #bands {
+        list-style: inside square;
+        font-size: 20px;
+        background: white;
+        width: 500px;
+        max-width: 100%;
+        margin: 0 auto 100px auto;
+        padding: 0;
+        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
+      }
+      
+      #bands li {
+        border-bottom: 1px solid #efefef;
+        padding: 20px;
+      }
+      
+      #bands li:last-child {
+        border-bottom: 0;
+      }
+
+      a {
+        color: #ffc600;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Band Names Sorted without Articles</h1>
+    <p>(like "the", "a", and "an")</p>
+    <ul id="bands"></ul>
+
+    <script>
+      (function() {
+        const bands = [
+          'The Plot in You',
+          'The Devil Wears Prada',
+          'blessthefall',
+          'Pierce the Veil',
+          'Norma Jean',
+          'STRFKR',
+          'The Bled',
+          'Say Anything',
+          'The Midway State',
+          'We Came as Romans',
+          'Counterparts',
+          'Oh, Sleeper',
+          'A Skylit Drive',
+          'CHVRCHES',
+          'Anywhere But Here',
+          'An Old Dog',
+        ];
+        
+        function removeBeginningArticles(str) {
+          return str.replace(/^(a |the |an )/i, '').trim().toLowerCase();
+        }
+
+        function sortWithoutArticles(bandA, bandB) {
+          return removeBeginningArticles(bandA) > removeBeginningArticles(bandB) ? 1 : -1;
+        }
+
+        const sortedBands = bands.sort(sortWithoutArticles);
+
+        document.querySelector('#bands').innerHTML =
+          sortedBands
+            .map(band => `<li>${band}</li>`)
+            .join('');
+      })();
+    </script>
+  </body>
+</html>
