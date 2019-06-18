@@ -73,3 +73,7 @@ My solutions for the JavaScript 30 Day Challenge.
 17. [Sort Without Articles](http://tylerhawkins.info/javascript30/17-Sort-Without-Articles/)
 
     Takeaways: Nothing too exciting here. RegEx is a useful thing to know and can be used in a string's `replace` method. Strings can be compared with operators like `<` and `>`. When doing string comparisons, earlier letters like "c" are evaluated as being "less than" later letters like "t". Uppercase letters are evaluated as being "less than" lowercase letters (meaning uppercase letters come first). So, to do an impartial comparison, it can be useful to convert your strings to all lowercase or all uppercase before doing the comparison.
+
+18. [Adding Up Times with Reduce](http://tylerhawkins.info/javascript30/18-Adding-Up-Times-with-Reduce/)
+
+    Takeaways: `NodeList`s are not the same as `Array`s and have different methods on their prototype. You can easily create an array from a `NodeList` using the `Array.from` method. Reduce is a handy method to loop through your array and transform it into another data type, like an object or a number. When dealing with large data sets, you want to avoid looping over the data multiple times, as that is not very efficient.
