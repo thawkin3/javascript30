@@ -77,3 +77,7 @@ My solutions for the JavaScript 30 Day Challenge.
 18. [Adding Up Times with Reduce](http://tylerhawkins.info/javascript30/18-Adding-Up-Times-with-Reduce/)
 
     Takeaways: `NodeLists` are not the same as `Arrays` and have different methods on their prototype. You can easily create an array from a `NodeList` using the `Array.from` method. `reduce` is a handy method to loop through your array and transform it into another data type, like an object or a number. When dealing with large data sets, you want to avoid looping over the data multiple times, as that is not very efficient.
+
+19. [Webcam Fun](http://tylerhawkins.info/javascript30/19-Webcam-Fun/)
+
+    Takeaways: Creating filters is fun! Canvases and videos can be used to display live video streams as well to take photos. Image data on a canvas can be retrieved, manipulated, and returned to create some neat effects.
