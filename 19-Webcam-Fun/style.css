@@ -16,6 +16,11 @@ body {
   margin-bottom: 1rem;
 }
 
+.effects label {
+  margin-right: 1rem;
+  display: inline-block;
+}
+
 .button-container {
   margin-bottom: 1.5rem;
 }
@@ -34,8 +39,8 @@ body {
 }
 
 .photo {
-  width: 100%;
-  float: left;
+  display: block;
+  margin: auto;
 }
 
 .player {
@@ -50,7 +55,6 @@ body {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: scroll;
-  background: lightblue;
 }
 
 .strip img {

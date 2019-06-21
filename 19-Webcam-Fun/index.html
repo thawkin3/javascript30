@@ -7,50 +7,68 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Webcam Fun with the getUserMedia API</h1>
     <div class="photobooth">
-      <div class="controls">
-        <div class="button-container">
-          <button id="take-photo-button">Take Photo</button>
-        </div>
-        <fieldset>
-          <legend>Effects</legend>
-          <label>
-            <input type="radio" name="active-filter" value="red-effect" id="red-effect" />
-            <span>Red Effect</span>
-          </label>
-          <label>
-            <input type="radio" name="active-filter" value="rgb-split" id="rgb-split" checked />
-            <span>RGB Split</span>
-          </label>
-          <label>
-            <input type="radio" name="active-filter" value="green-screen" id="green-screen" />
-            <span>Green Screen</span>
-          </label>
-        </fieldset>
-        <fieldset>
-          <legend>Green Screen Controls</legend>
-          <div class="rgb">
-            <label for="rmin">Red Min:</label>
-            <input type="range" min=0 max=255 name="rmin">
-            <label for="rmax">Red Max:</label>
-            <input type="range" min=0 max=255 name="rmax">
-
-            <br>
-
-            <label for="gmin">Green Min:</label>
-            <input type="range" min=0 max=255 name="gmin">
-            <label for="gmax">Green Max:</label>
-            <input type="range" min=0 max=255 name="gmax">
-
-            <br>
-
-            <label for="bmin">Blue Min:</label>
-            <input type="range" min=0 max=255 name="bmin">
-            <label for="bmax">Blue Max:</label>
-            <input type="range" min=0 max=255 name="bmax">
+      <div class="non-video-container">
+        <h1>Webcam Fun with the getUserMedia API</h1>
+        <div class="controls">
+          <div class="button-container">
+            <button id="take-photo-button">Take Photo</button>
           </div>
+          <fieldset class="effects">
+            <legend>Effects</legend>
+            <label>
+                <input type="radio" name="active-filter" value="normal" id="normal" />
+                <span>Normal</span>
+              </label>
+            <label>
+              <input type="radio" name="active-filter" value="red-effect" id="red-effect" />
+              <span>Red Effect</span>
+            </label>
+            <label>
+              <input type="radio" name="active-filter" value="rgb-split" id="rgb-split" checked />
+              <span>RGB Split</span>
+            </label>
+            <label>
+              <input type="radio" name="active-filter" value="green-screen" id="green-screen" />
+              <span>Green Screen</span>
+            </label>
+            <label>
+              <input type="radio" name="active-filter" value="grey-scale" id="grey-scale" />
+              <span>Grayscale</span>
+            </label>
+            <label>
+              <input type="radio" name="active-filter" value="embossed" id="embossed" />
+              <span>Embossed</span>
+            </label>
+            <label>
+              <input type="radio" name="active-filter" value="inverted" id="inverted" />
+              <span>Inverted</span>
+            </label>
           </fieldset>
+          <fieldset>
+            <legend>Green Screen Controls</legend>
+            <div class="rgb">
+              <label for="rmin">Red Min:</label>
+              <input type="range" min=0 max=255 value=50 name="rmin" id="rmin">
+              <label for="rmax">Red Max:</label>
+              <input type="range" min=0 max=255 value=255 name="rmax" id="rmax">
+
+              <br>
+
+              <label for="gmin">Green Min:</label>
+              <input type="range" min=0 max=255  value=50 name="gmin" id="gmin">
+              <label for="gmax">Green Max:</label>
+              <input type="range" min=0 max=255 value=255 name="gmax" id="gmax">
+
+              <br>
+
+              <label for="bmin">Blue Min:</label>
+              <input type="range" min=0 max=255 value=50 name="bmin" id="bmin">
+              <label for="bmax">Blue Max:</label>
+              <input type="range" min=0 max=255 value=255 name="bmax" id="bmax">
+            </div>
+            </fieldset>
+        </div>
       </div>
 
       <canvas class="photo"></canvas>
