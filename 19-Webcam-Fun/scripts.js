@@ -19,24 +19,62 @@
     inverted,
   };
 
+  const videoConfig = { video: true, audio: false };
+
+  function getVideoSuccessHandler(stream) {
+    if ('srcObject' in video) {
+      video.srcObject = stream;
+    } else {
+      video.src = URL.createObjectURL(stream);
+    }
+    video.play();
+    setTimeout(resizeCanvas, 1000); // resize hack
+  }
+
+  function getVideoErrorHandler(error) {
+    alert(`Video error! ${error}`);
+  }
+
   function getVideo() {
-    navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-      .then(localMediaStream => {
-      
-    //  DEPRECIATION : 
-    //       The following has been depreceated by major browsers as of Chrome and Firefox.
-    //       video.src = window.URL.createObjectURL(localMediaStream);
-    //       Please refer to these:
-    //       Depreceated  - https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL
-    //       Newer Syntax - https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/srcObject
-        
-        video.srcObject = localMediaStream;
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia(videoConfig)
+        .then(getVideoSuccessHandler)
+        .catch(getVideoErrorHandler);
+    }
+    // Legacy video listeners
+    else if (navigator.getUserMedia) { // Standard
+      navigator.getUserMedia(videoConfig, function(stream) {
+        if ('srcObject' in video) {
+          video.srcObject = stream;
+        } else {
+          video.src = stream;
+        }
         video.play();
         setTimeout(resizeCanvas, 1000); // resize hack
-      })
-      .catch(err => {
-        console.error(`OH NO!!!`, err);
-      });
+      }, getVideoErrorHandler);
+    } else if (navigator.webkitGetUserMedia) { // WebKit-prefixed
+      navigator.webkitGetUserMedia(videoConfig, function(stream) {
+        if ('srcObject' in video) {
+          video.srcObject = stream;
+        } else {
+          video.src = window.webkitURL.createObjectURL(stream);
+        }
+        video.play();
+        setTimeout(resizeCanvas, 1000); // resize hack
+      }, getVideoErrorHandler);
+    } else if (navigator.mozGetUserMedia) { // WebKit-prefixed
+      navigator.mozGetUserMedia(videoConfig, function(stream) {
+        if ('srcObject' in video) {
+          video.srcObject = stream;
+        } else {
+          video.src = window.URL.createObjectURL(stream);
+        }
+        video.play();
+        setTimeout(resizeCanvas, 1000); // resize hack
+      }, getVideoErrorHandler);
+    } else {
+      getVideoErrorHandler('Unknown error. Browser doesn\'t support getUserMedia API.');
+    }
   }
 
   function paintToCanvas() {
@@ -123,13 +161,13 @@
   function greyScale(pixels) {
     const pixelsLength = pixels.data.length;
     for (let i = 0; i < pixelsLength; i+=4) {
-      const r = pixels.data[i + 0]; // RED
-      const g = pixels.data[i + 1]; // GREEN
-      const b = pixels.data[i + 2]; // BLUE
-      const brightness = (3 * r + 4 * g + b)>>>3;
-      pixels.data[i] = brightness;
-      pixels.data[i+1] = brightness;
-      pixels.data[i+2] = brightness;
+      const red = pixels.data[i + 0]; // RED
+      const green = pixels.data[i + 1]; // GREEN
+      const blue = pixels.data[i + 2]; // BLUE
+      const avg = (red + green + blue) / 3;
+      pixels.data[i + 0] = avg;
+      pixels.data[i + 1] = avg;
+      pixels.data[i + 2] = avg;
     }
     return pixels;
   }
@@ -162,7 +200,6 @@
   function resizeCanvas() {
     const maxHeight = window.innerHeight - nonVideoContainer.offsetHeight - 200;
     const maxWidth = window.innerWidth;
-    // canvas.style.height = `${maxHeight}px`;
     canvas.style.height = `${Math.min(maxHeight, (maxWidth * (video.videoHeight / video.videoWidth)))}px`;
   }
 
