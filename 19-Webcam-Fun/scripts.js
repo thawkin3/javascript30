@@ -89,7 +89,6 @@
   }
 
   function paintToCanvas() {
-    alert('paintToCanvas');
     const [width, height] = resizeCanvas();
 
     return setInterval(() => {

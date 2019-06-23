@@ -16,7 +16,8 @@ body {
   margin-bottom: 1rem;
 }
 
-.effects-controls label {
+.effects-controls label,
+.rgb label {
   margin-right: 1rem;
   display: inline-block;
 }
