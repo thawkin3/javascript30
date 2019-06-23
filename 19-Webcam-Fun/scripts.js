@@ -10,7 +10,7 @@
   const greenScreenControls = document.querySelector('.green-screen-controls');
   const nonVideoContainer = document.querySelector('.non-video-container');
 
-
+  let paintInveral;
   let activeFilter = document.querySelector('[name="active-filter"]:checked').value;
   const filterOptions = {
     normal,
@@ -26,6 +26,9 @@
 
   function switchCamera() {
     videoConfig.video.facingMode = videoConfig.video.facingMode === 'user' ? 'environment' : 'user';
+    if (paintInveral) {
+      clearInterval(paintInveral);
+    }
     getVideo(videoConfig);
   }
 
@@ -229,7 +232,7 @@
   getVideo(videoConfig);
   resizeCanvas();
 
-  video.addEventListener('canplay', paintToCanvas);
+  video.addEventListener('canplay', () => { paintInveral = paintToCanvas(); });
   takePhotoButton.addEventListener('click', takePhoto);
   switchCameraButton.addEventListener('click', switchCamera);
   radioButtons.forEach(radioButton => radioButton.addEventListener('change', updateActiveFilter));
