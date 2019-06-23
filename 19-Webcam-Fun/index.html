@@ -12,9 +12,13 @@
         <h1>Webcam Fun with the getUserMedia API</h1>
         <div class="controls">
           <div class="button-container">
-            <button id="take-photo-button">Take Photo</button>
+            <fieldset class="camera-actions-controls">
+              <legend>Camera Actions</legend>
+              <button id="take-photo-button">Take Photo</button>
+              <button id="switch-camera-button">Switch Camera (Mobile Only)</button>
+            </fieldset>
           </div>
-          <fieldset class="effects">
+          <fieldset class="effects-controls">
             <legend>Effects</legend>
             <label>
                 <input type="radio" name="active-filter" value="normal" id="normal" />
@@ -45,7 +49,7 @@
               <span>Inverted</span>
             </label>
           </fieldset>
-          <fieldset>
+          <fieldset class="green-screen-controls" style="display: none;">
             <legend>Green Screen Controls</legend>
             <div class="rgb">
               <label for="rmin">Red Min:</label>

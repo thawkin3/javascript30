@@ -16,13 +16,9 @@ body {
   margin-bottom: 1rem;
 }
 
-.effects label {
+.effects-controls label {
   margin-right: 1rem;
   display: inline-block;
-}
-
-.button-container {
-  margin-bottom: 1.5rem;
 }
 
 .photobooth {

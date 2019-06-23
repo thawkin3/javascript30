@@ -5,8 +5,11 @@
   const strip = document.querySelector('.strip');
   const snap = document.querySelector('.snap');
   const takePhotoButton = document.querySelector('#take-photo-button');
+  const switchCameraButton = document.querySelector('#switch-camera-button');
   const radioButtons = document.querySelectorAll('input[type="radio"]');
+  const greenScreenControls = document.querySelector('.green-screen-controls');
   const nonVideoContainer = document.querySelector('.non-video-container');
+
 
   let activeFilter = document.querySelector('[name="active-filter"]:checked').value;
   const filterOptions = {
@@ -20,6 +23,11 @@
   };
 
   const videoConfig = { video: { facingMode: 'user' }, audio: false };
+
+  function switchCamera() {
+    videoConfig.video.facingMode = videoConfig.video.facingMode === 'user' ? 'environment' : 'user';
+    getVideo(videoConfig);
+  }
 
   function getVideoSuccessHandler(stream) {
     if ('srcObject' in video) {
@@ -35,7 +43,7 @@
     alert(`Video error! ${error}`);
   }
 
-  function getVideo() {
+  function getVideo(videoConfig) {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia(videoConfig)
         .then(getVideoSuccessHandler)
@@ -78,10 +86,7 @@
   }
 
   function paintToCanvas() {
-    const width = video.videoWidth;
-    const height = video.videoHeight;
-    canvas.width = width;
-    canvas.height = height;
+    const [width, height] = resizeCanvas();
 
     return setInterval(() => {
       ctx.drawImage(video, 0, 0, width, height); // put the video on the canvas
@@ -195,19 +200,38 @@
 
   function updateActiveFilter(e) {
     activeFilter = e.target.value;
+    const greenScreenControlsDisplayValue = activeFilter === 'green-screen' ? 'block' : 'none';
+    greenScreenControls.style.display = greenScreenControlsDisplayValue;
+    resizeCanvas();
   }
 
   function resizeCanvas() {
+    const width = video.videoWidth;
+    const height = video.videoHeight;
+    canvas.width = width;
+    canvas.height = height;
+
     const maxHeight = window.innerHeight - nonVideoContainer.offsetHeight - 200;
     const maxWidth = window.innerWidth;
-    canvas.style.height = `${Math.min(maxHeight, (maxWidth * (video.videoHeight / video.videoWidth)))}px`;
+    const headingWidth = document.querySelector('h1').offsetWidth;
+    const isMobileSize = maxWidth <= 768;
+    if (isMobileSize) {
+      canvas.style.height = 'initial';
+      canvas.style.width = `${nonVideoContainer.offsetWidth}px`;
+    } else {
+      canvas.style.height = `${Math.min(maxHeight, (maxWidth * (video.videoHeight / video.videoWidth)))}px`;
+      canvas.style.width = 'initial';
+    }
+
+    return [width, height];
   }
 
-  getVideo();
+  getVideo(videoConfig);
   resizeCanvas();
 
   video.addEventListener('canplay', paintToCanvas);
   takePhotoButton.addEventListener('click', takePhoto);
+  switchCameraButton.addEventListener('click', switchCamera);
   radioButtons.forEach(radioButton => radioButton.addEventListener('change', updateActiveFilter));
   window.addEventListener('resize', resizeCanvas);
   window.addEventListener('orientationchange', resizeCanvas);
