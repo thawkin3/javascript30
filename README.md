@@ -80,4 +80,6 @@ My solutions for the JavaScript 30 Day Challenge.
 
 19. [Webcam Fun](https://tylerhawkins.info/javascript30/19-Webcam-Fun/)
 
-    Takeaways: Creating filters is fun! Canvases and videos can be used to display live video streams as well to take photos. Image data on a canvas can be retrieved, manipulated, and returned to create some neat effects. NOTE: Access to the user's media requires the webpage to be served over HTTPS, so if your site does not have an SSL Certificate (like mine), you can still visit the site with a url that begins with `https://`, you'll just get a warning from your browser that the site is not secure. You can then choose to still visit the site.
+    Takeaways: Creating filters is fun! Canvases and videos can be used to display live video streams as well to take photos. Image data on a canvas can be retrieved, manipulated, and returned to create some neat effects. The `getUserMedia` API is relatively young and has gone through some changes in the past few years, so you have to include quite a lot of fallback code to handle things properly in older browsers.
+    
+    NOTE: Access to the user's media requires the webpage to be served over HTTPS, so if your site does not have an SSL Certificate (like mine), you can still visit the site with a url that begins with `https://`, you'll just get a warning from your browser that the site is not secure. You can then choose to still visit the site.
