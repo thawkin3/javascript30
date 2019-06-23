@@ -19,7 +19,7 @@
     inverted,
   };
 
-  const videoConfig = { video: true, audio: false };
+  const videoConfig = { video: { facingMode: 'user' }, audio: false };
 
   function getVideoSuccessHandler(stream) {
     if ('srcObject' in video) {
