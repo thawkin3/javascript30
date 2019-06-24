@@ -87,3 +87,5 @@ My solutions for the JavaScript 30 Day Challenge.
 20. [Speech Detection](https://tylerhawkins.info/javascript30/20-Speech-Detection/)
 
     Takeaways: The Speech Recognition API is an experimental technology that doesn't have wide browser support yet. Still, it's a neat concept.
+
+    NOTE: Access to the user's media requires the webpage to be served over HTTPS, so if your site does not have an SSL Certificate (like mine), you can still visit the site with a url that begins with `https://`, you'll just get a warning from your browser that the site is not secure. You can then choose to still visit the site.
