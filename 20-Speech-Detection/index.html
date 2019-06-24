@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Speech Detection</title>
+
+    <style>
+        html {
+          font-size: 10px;
+        }
+  
+        body {
+          background: #ffc600;
+          font-family: 'helvetica neue';
+          font-weight: 200;
+          font-size: 20px;
+          padding: 20px;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        h1,
+        .disclaimer {
+          text-align: center;
+          max-width: 500px;
+          width: 100%;
+          margin: 20px auto;
+        }
+
+        .disclaimer a {
+          color: #fff;
+        }
+  
+        .words {
+          max-width: 100%;
+          width: 500px;
+          margin: 50px auto;
+          background: white;
+          border-radius: 5px;
+          box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+          padding: 1rem 2rem 1rem 5rem;
+          background: -webkit-gradient(linear, 0 0, 0 100%, from(#d9eaf3), color-stop(4%, #fff)) 0 4px;
+          background-size: 100% 3rem;
+          position: relative;
+          line-height: 3rem;
+        }
+        
+        p {
+          margin: 0 0 3rem;
+        }
+  
+        .words:before {
+          content: '';
+          position: absolute;
+          width: 4px;
+          top: 0;
+          left: 30px;
+          bottom: 0;
+          border: 1px solid;
+          border-color: transparent #efe4e4;
+        }
+      </style>
+  </head>
+  <body>
+    <h1>Speech Recognition</h1>
+    <p class="disclaimer">Start speaking to see your words transcribed here for you!</p>
+    <p class="disclaimer">NOTE: This is an experimental technology and is not widely supported. Please see the <a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition">MDN docs</a> for current browser support.</p>
+    <div class="words" contenteditable></div>
+
+    <script>
+      (function() {
+        // https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        // Browser does support Speech Recognition
+        if (window.SpeechRecognition) {
+          const recognition = new SpeechRecognition();
+          recognition.interimResults = true; // return results even when they're not yet final
+          recognition.lang = 'en-US'; // specify the language
+          
+          // add an empty paragraph tag to the DOM
+          let p = document.createElement('p');
+          const words = document.querySelector('.words');
+          words.appendChild(p);
+
+          function resultHandler(e) {
+            // create a single string out of the results data
+            const transcript = Array.from(e.results)
+              .map(result => result[0].transcript)
+              .join('');
+
+            // fun with emojis
+            const poopScript = transcript.replace(/poop|poo|shit|dump/gi, '💩');
+            p.textContent = poopScript;
+
+            // When the speech recognition API marks the transscription as being final, put it on the page
+            if (e.results[0].isFinal) {
+              p = document.createElement('p');
+              words.appendChild(p);
+            }
+          }
+
+          recognition.addEventListener('result', resultHandler); // listen for results
+          recognition.addEventListener('end', recognition.start); // start listening again after it ends
+
+          recognition.start(); // kick things off
+
+        // Browser does not support Speech Recognition
+        } else {
+          let p = document.createElement('p');
+          p.textContent = 'Sorry! Your browser does not support the Speech Recognition API.';
+          const words = document.querySelector('.words');
+          words.appendChild(p);
+        }
+      })();
+    </script>
+  </body>
+</html>
