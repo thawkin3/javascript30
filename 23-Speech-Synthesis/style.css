@@ -28,6 +28,7 @@ body {
 .voiceinator {
   padding: 2rem;
   width: 50rem;
+  max-width: 100%;
   margin: 0 auto;
   border-radius: 1rem;
   position: relative;
@@ -66,10 +67,6 @@ h1 {
 
 textarea {
   height: 20rem;
-}
-
-input[type="select"] {
-
 }
 
 .voiceinator button {
