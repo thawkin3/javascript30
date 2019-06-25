@@ -96,6 +96,10 @@ My solutions for the JavaScript 30 Day Challenge.
 
 	NOTE: Access to the user's location requires the webpage to be served over HTTPS, so if your site does not have an SSL Certificate (like mine), you can still visit the site with a url that begins with `https://`, you'll just get a warning from your browser that the site is not secure. You can then choose to still visit the site.
 
-22. [Follow Along Link Highlighter](http://tylerhawkins.info/javascript30/21-Follow-Along-Link-Highlighter/)
+22. [Follow Along Link Highlighter](http://tylerhawkins.info/javascript30/22-Follow-Along-Link-Highlighter/)
 
     Takeaways: `Element.getBoundingClientRect` returns the size of an element and its position relative to the viewport (not its position relative to the document if you've scrolled). If you want to take into account scroll position as well, you can use `window.scrollY` or `window.scrollX`.
+
+23. [Speech Synthesis](http://tylerhawkins.info/javascript30/23-Speech-Synthesis/)
+
+    Takeaways: Speech Synthesis Utterance is a pretty cool API. It can be used to read text to you out loud in various different voices. The API is still considered experimental, but it does have decent support from most major browsers. IE doesn't support it though (surprise, surprise).
