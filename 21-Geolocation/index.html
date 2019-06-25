@@ -100,20 +100,24 @@
         const speedContainer = document.querySelector('.speed-value');
         const errorMessage = document.querySelector('.error');
 
-        navigator.geolocation.watchPosition((data) => {
-          const speed = data.coords.speed;
-          const heading = data.coords.heading;
-          speedContainer.textContent = speed || 0;
-          arrowDisplay.style.transform = `rotate(${heading || 0}deg)`;
+        if (navigator && navigator.geolocation) {
+          navigator.geolocation.watchPosition((data) => {
+            const speed = data.coords.speed;
+            const heading = data.coords.heading;
+            speedContainer.textContent = speed || 0;
+            arrowDisplay.style.transform = `rotate(${heading || 0}deg)`;
 
-          if (speed === null && heading === null) {
-            errorMessage.textContent = 'Sorry, no speed or direction data found.';
-          } else {
-            errorMessage.textContent = '';
-          }
-        }, (err) => {
-          errorMessage.textContent = `Error: ${err && err.message}`;
-        });
+            if (speed === null && heading === null) {
+              errorMessage.textContent = 'Sorry, no speed or direction data found.';
+            } else {
+              errorMessage.textContent = '';
+            }
+          }, (err) => {
+            errorMessage.textContent = `Error: ${err && err.message}`;
+          });
+        } else {
+          errorMessage.textContent = 'Sorry, your browser doesn\'t support the Geolocation API.';
+        }
       })();
     </script>
   </body>
