@@ -95,3 +95,7 @@ My solutions for the JavaScript 30 Day Challenge.
 	Takeaways: The Geolocation API can retrieve more data than just the user's latitude and longitude. On mobile devices, it can also give you the speed and the heading (direction) of the device when it's moving. The location data isn't always super accurate and can be gathered in a few different ways (this list goes from most accurate to least accurate): GPS, a WiFi positioning system, triangulation with your mobile network, or using the device's IP address.
 
 	NOTE: Access to the user's location requires the webpage to be served over HTTPS, so if your site does not have an SSL Certificate (like mine), you can still visit the site with a url that begins with `https://`, you'll just get a warning from your browser that the site is not secure. You can then choose to still visit the site.
+
+22. [Follow Along Link Highlighter](http://tylerhawkins.info/javascript30/21-Follow-Along-Link-Highlighter/)
+
+    Takeaways: `Element.getBoundingClientRect` returns the size of an element and its position relative to the viewport (not its position relative to the document if you've scrolled). If you want to take into account scroll position as well, you can use `window.scrollY` or `window.scrollX`.
