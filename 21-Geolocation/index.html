@@ -91,7 +91,7 @@
 
     <p class="speed">
       <span class="speed-value">0</span>
-      <span class="units">KM/H</span>
+      <span class="units">m/s</span>
     </p>
     <p class="error"></p>
     <script>
@@ -100,21 +100,31 @@
         const speedContainer = document.querySelector('.speed-value');
         const errorMessage = document.querySelector('.error');
 
-        if (navigator && navigator.geolocation) {
-          navigator.geolocation.watchPosition((data) => {
-            const speed = data.coords.speed;
-            const heading = data.coords.heading;
-            speedContainer.textContent = speed || 0;
-            arrowDisplay.style.transform = `rotate(${heading || 0}deg)`;
+        function successHandler(data) {
+          const speed = data.coords.speed;
+          const heading = data.coords.heading;
+          speedContainer.textContent = speed || 0;
+          arrowDisplay.style.transform = `rotate(${heading || 0}deg)`;
 
-            if (speed === null && heading === null) {
-              errorMessage.textContent = 'Sorry, no speed or direction data found.';
-            } else {
-              errorMessage.textContent = '';
-            }
-          }, (err) => {
-            errorMessage.textContent = `Error: ${err && err.message}`;
-          });
+          if (speed === null && heading === null) {
+            errorMessage.textContent = 'Sorry, no speed or direction data found.';
+          } else {
+            errorMessage.textContent = '';
+          }
+        }
+
+        function errorHandler(err) {
+          errorMessage.textContent = `Error: ${err && err.message}`;
+        }
+
+        const configOptions = {
+          enableHighAccuracy: true,
+          maximumAge: 30000,
+          timeout: 20000
+        };
+
+        if (navigator && navigator.geolocation) {
+          navigator.geolocation.watchPosition(successHandler, errorHandler, configOptions);
         } else {
           errorMessage.textContent = 'Sorry, your browser doesn\'t support the Geolocation API.';
         }
