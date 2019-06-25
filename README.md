@@ -80,12 +80,18 @@ My solutions for the JavaScript 30 Day Challenge.
 
 19. [Webcam Fun](https://tylerhawkins.info/javascript30/19-Webcam-Fun/)
 
-    Takeaways: Creating filters is fun! Canvases and videos can be used to display live video streams as well to take photos. Image data on a canvas can be retrieved, manipulated, and returned to create some neat effects. The `getUserMedia` API is relatively young and has gone through some changes in the past few years, so you have to include quite a lot of fallback code to handle things properly in older browsers.
+    Takeaways: Creating filters is fun! Canvases and videos can be used to display live video streams as well to take photos. Image data on a canvas can be retrieved, manipulated, and returned to create some neat effects. The `getUserMedia` API is relatively young and has gone through some changes in the past few years, so you have to include quite a lot of fallback code to handle things properly in older browsers. For example, `navigator.getUserMedia` is now found at `navigator.mediaDevices.getUserMedia`, and this method returns a Promise rather than using callbacks. To attach the media stream to the video element, you used to be able to use `createObjectURL`, but that method is being deprecated in favor of simply set the value of `video.srcObject` to the media stream. In order to make this demo work on mobile devices, you also have to set a few more attributes on the video element: `muted`, `autoplay`, and `playsinline`. This keeps the video in the context of your webpage instead of breaking out into the mobile device's own native video player.
     
-    NOTE: Access to the user's media requires the webpage to be served over HTTPS, so if your site does not have an SSL Certificate (like mine), you can still visit the site with a url that begins with `https://`, you'll just get a warning from your browser that the site is not secure. You can then choose to still visit the site.
+    NOTE: Access to the user's camera requires the webpage to be served over HTTPS, so if your site does not have an SSL Certificate (like mine), you can still visit the site with a url that begins with `https://`, you'll just get a warning from your browser that the site is not secure. You can then choose to still visit the site.
 
 20. [Speech Detection](https://tylerhawkins.info/javascript30/20-Speech-Detection/)
 
     Takeaways: The Speech Recognition API is an experimental technology that doesn't have wide browser support yet. Still, it's a neat concept.
 
-    NOTE: Access to the user's media requires the webpage to be served over HTTPS, so if your site does not have an SSL Certificate (like mine), you can still visit the site with a url that begins with `https://`, you'll just get a warning from your browser that the site is not secure. You can then choose to still visit the site.
+    NOTE: Access to the user's microphone requires the webpage to be served over HTTPS, so if your site does not have an SSL Certificate (like mine), you can still visit the site with a url that begins with `https://`, you'll just get a warning from your browser that the site is not secure. You can then choose to still visit the site.
+
+21. [Geolocation](https://tylerhawkins.info/javascript30/21-Geolocation/)
+
+	Takeaways: The Geolocation API can retrieve more data than just the user's lattitude and longitude. On mobile devices, it can also give you the speed and the heading (direction) of the device when it's moving. The location data isn't always super accurate and can be gathered in a few different ways (this list goes from most accurate to least accurate): GPS, a WiFi positioning system, triangulation with your mobile network, or using the device's IP address.
+
+	NOTE: Access to the user's location requires the webpage to be served over HTTPS, so if your site does not have an SSL Certificate (like mine), you can still visit the site with a url that begins with `https://`, you'll just get a warning from your browser that the site is not secure. You can then choose to still visit the site.
