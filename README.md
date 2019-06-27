@@ -103,3 +103,7 @@ My solutions for the JavaScript 30 Day Challenge.
 23. [Speech Synthesis](http://tylerhawkins.info/javascript30/23-Speech-Synthesis/)
 
     Takeaways: Speech Synthesis Utterance is a pretty cool API. It can be used to read text to you out loud in various different voices. The API is still considered experimental, but it does have decent support from most major browsers. IE doesn't support it though (surprise, surprise).
+
+24. [Sticky Nav](http://tylerhawkins.info/javascript30/24-Sticky-Nav/)
+
+    Takeaways: Implementing a sticky nav and other subtle transitions and animations on your web page can make it go from boring to awesome, if done properly. The scale effect is a nice touch.
