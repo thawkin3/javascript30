@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Event Capture, Propagation, Bubbling, and Once</title>
+
+    <style>
+      html {
+        box-sizing: border-box;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+      }
+      
+      *, *:before, *:after { 
+        box-sizing: inherit; 
+      }
+
+      body {
+        margin: 20px;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      fieldset {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+      }
+
+      div {
+        width: 100%;
+        padding: 40px;
+        text-align: center
+      }
+
+      div > p:not(:last-child) {
+        margin: 0px auto 40px auto;
+      }
+
+      .one {
+        background: thistle;
+      }
+
+      .two {
+        background: mistyrose;
+      }
+
+      .three {
+        background: coral;
+      }
+    </style>
+  </head>
+  <body class="bod">
+    <h1>Event Capture, Propagation, Bubbling, and Once</h1>
+    <p>Choose an option below and then click on any of the rectangles. Open up your JavaScript console to see what events are logged, and in what order.</p>
+    <fieldset>
+      <legend>Event Options</legend>
+      <label><input type="radio" name="event-option" value="Bubble" checked /> Bubble</label>
+      <label><input type="radio" name="event-option" value="Bubble and Stop Propagation" /> Bubble and Stop Propagation</label>
+      <label><input type="radio" name="event-option" value="Capture" /> Capture</label>
+      <label><input type="radio" name="event-option" value="Capture and Stop Propagation" /> Capture and Stop Propagation</label>
+      <label><input type="radio" name="event-option" value="Once" /> Once (with Bubble)</label>
+    </fieldset>
+    <div class="one">
+      <p>One</p>
+      <div class="two">
+        <p>Two</p>
+        <div class="three">
+          <p>Three</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const divs = document.querySelectorAll('div');
+      const inputs = document.querySelectorAll('input[type="radio"]');
+
+      function logClickWithBubble() {
+        console.log(`Bubble up: ${this.classList.value}`);
+      }
+
+      function logClickWithBubbleNoPropagate(e) {
+        e.stopPropagation();
+        console.log(`Bubble up, no propagate: ${this.classList.value}`);
+      }
+
+      function logClickWithCapture() {
+        console.log(`Capture down: ${this.classList.value}`);
+      }
+
+      function logClickWithCaptureNoPropagate(e) {
+        e.stopPropagation();
+        console.log(`Capture down, no propagate: ${this.classList.value}`);
+      }
+
+      function logClickOnce() {
+        console.log(`Once: ${this.classList.value}`);
+      }
+
+      const eventOptions = {
+        'Bubble': { methodToCall: logClickWithBubble, options: { capture: false } },
+        'Bubble and Stop Propagation': { methodToCall: logClickWithBubbleNoPropagate, options: { capture: false } },
+        'Capture': { methodToCall: logClickWithCapture, options: { capture: true } },
+        'Capture and Stop Propagation': { methodToCall: logClickWithCaptureNoPropagate, options: { capture: true } },
+        'Once': { methodToCall: logClickOnce, options: { capture: false, once: true } },
+      }
+
+      let currentEventOption = eventOptions['Bubble'];
+
+      function updateEventOptions(e) {
+        selectedEventOption = eventOptions[e.target.value];
+
+        divs.forEach(div => {
+          div.removeEventListener('click', currentEventOption.methodToCall, currentEventOption.options);
+          div.addEventListener('click', selectedEventOption.methodToCall, selectedEventOption.options);
+        });
+
+        currentEventOption = selectedEventOption;
+      }
+
+      divs.forEach(div => div.addEventListener('click', logClickWithBubble, { capture: false }));
+      inputs.forEach(input => input.addEventListener('change', updateEventOptions));
+    </script>
+  </body>
+</html>

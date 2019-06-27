@@ -107,3 +107,7 @@ My solutions for the JavaScript 30 Day Challenge.
 24. [Sticky Nav](http://tylerhawkins.info/javascript30/24-Sticky-Nav/)
 
     Takeaways: Implementing a sticky nav and other subtle transitions and animations on your web page can make it go from boring to awesome, if done properly. The scale effect is a nice touch.
+
+25. [Event Capture, Propagation, Bubbling, and Once](http://tylerhawkins.info/javascript30/25-Event-Capture-Propagation-Bubbling-and-Once/)
+
+    Takeaways: Events bubble up the DOM by default, but you can make then capture down the DOM by passing an option when adding your event listener. When removing event listeners, you should be as specific as you can be, so if you added an event listener with a method and some config options, you should remove it with that same method and config options. If you stop the event propagation, it stops being handled on the additional elements that it would have normally bubbled up or captured down to. The `once` option is a new option that allows you to have the event handler run just once and then remove the event listener on that element so that it doesn't run again unless you re-add the event listener again.
