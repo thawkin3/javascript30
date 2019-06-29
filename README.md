@@ -111,3 +111,7 @@ My solutions for the JavaScript 30 Day Challenge.
 25. [Event Capture, Propagation, Bubbling, and Once](http://tylerhawkins.info/javascript30/25-Event-Capture-Propagation-Bubbling-and-Once/)
 
     Takeaways: Events bubble up the DOM by default, but you can make then capture down the DOM by passing an option when adding your event listener. When removing event listeners, you should be as specific as you can be, so if you added an event listener with a method and some config options, you should remove it with that same method and config options. If you stop the event propagation, it stops being handled on the additional elements that it would have normally bubbled up or captured down to. The `once` option is a new option that allows you to have the event handler run just once and then remove the event listener on that element so that it doesn't run again unless you re-add the event listener again.
+
+26. [Stripe Follow Along Nav](http://tylerhawkins.info/javascript30/26-Stripe-Follow-Along-Nav/)
+
+    Takeaways: Follow-along nav animations are difficult to implement, especially when you try to take into account hovering with a mouse, focusing/tabbing with a keyboard, and mobile touch events. This example isn't perfect, but it's a nice proof of concept.
