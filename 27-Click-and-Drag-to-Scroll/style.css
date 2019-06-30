@@ -1,6 +1,6 @@
 html {
   box-sizing: border-box;
-  background: url('https://source.unsplash.com/NFs6dRTBgaM/2000x2000') fixed;
+  background: url('background.jpeg') fixed;
   background-size: cover;
 }
 
@@ -11,16 +11,29 @@ html {
 body {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   font-family: sans-serif;
   font-size: 20px;
   margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+  color: deeppink;
+  text-shadow:
+   -2px -2px 0 #000,  
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+     2px 2px 0 #000;
 }
 
 .items {
-  height: 800px;
-  padding: 100px;
+  height: 500px;
+  padding: 70px 40px 40px 40px;
   width: 100%;
   border: 1px solid white;
   overflow-x: scroll;
