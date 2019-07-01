@@ -120,3 +120,6 @@ My solutions for the JavaScript 30 Day Challenge.
 
 	Takeaways: `Element.scrollLeft` is the amount of pixels that an element has been scrolled from the left. `Event.pageX` is the X coordinate of the event (mousemove in this case) relative to the document. `Event.clientX` is the X coordinate of the event (mousemove in this case) relative to the viewport. These two numbers would be different if you had horizontally scrolled on the entire page (and same for `Event.pageY` and `Event.clientY` when the page has been vertically scrolled).
 
+28. [Video Speed Controller](http://tylerhawkins.info/javascript30/28-Video-Speed-Controller/)
+
+    Takeaways: Mouse coordinates are calculated a little differently than touch coordinates. Likewise, mouse events use different event listeners than touch events (ex. `mousemove` vs. `touchmove`).
