@@ -197,14 +197,19 @@
             return total + videoDurationInSeconds;
           }, 0);
 
-        let secondsLeft = seconds;
-        const hours = Math.floor(secondsLeft / 3600);
-        secondsLeft = secondsLeft % 3600;
+          let secondsLeft = seconds;
+          const hours = Math.floor(secondsLeft / 3600);
+          secondsLeft = secondsLeft % 3600;
 
-        const minutes = Math.floor(secondsLeft / 60);
-        secondsLeft = secondsLeft % 60;
+          const minutes = Math.floor(secondsLeft / 60);
+          secondsLeft = secondsLeft % 60;
 
-        document.querySelector('.time-total').innerHTML = `${hours}:${minutes}:${secondsLeft}`;
+          const hoursDisplay = `${hours < 10 ? '0' : '' }${hours}`;
+          const minutesDisplay = `${minutes < 10 ? '0' : ''}${minutes}`;
+          const secondsDisplay = `${secondsLeft < 10 ? '0' : '' }${secondsLeft}`;
+          const display = `${hoursDisplay}:${minutesDisplay}:${secondsDisplay}`;
+
+        document.querySelector('.time-total').innerHTML = display;
       })();
     </script>
   </body>
