@@ -46,9 +46,9 @@ My solutions for the JavaScript 30 Day Challenge.
 
     Takeaways: Shift-clicking to select multiple boxes is a really nice feature to help make the user experience better when dealing with long lists. When implementing this functionality you need to handle both the selecting and deselecting of multiple checkboxes. It's important that inputs have labels on them so that both the checkbox itself and the label text are clickable. You can disable text highlighting with the CSS rule `user-select: none`.
 
-11. Custom Video Player
+11. [Custom Video Player](http://tylerhawkins.info/javascript30/11-Custom-Video-Player/)
 
-	Coming soon!
+	Takeaways: A lot goes into building a custom HTML5 video player in order to make it accessible and keyboard navigable.
 
 12. [Key Sequence Detection](http://tylerhawkins.info/javascript30/12-Key-Sequence-Detection/)
 
