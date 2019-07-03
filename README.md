@@ -123,3 +123,7 @@ My solutions for the JavaScript 30 Day Challenge.
 28. [Video Speed Controller](http://tylerhawkins.info/javascript30/28-Video-Speed-Controller/)
 
     Takeaways: Mouse coordinates are calculated a little differently than touch coordinates. Likewise, mouse events use different event listeners than touch events (ex. `mousemove` vs. `touchmove`).
+
+29. [Countdown Timer](http://tylerhawkins.info/javascript30/29-Countdown-Timer/)
+
+    Takeaways: A really neat trick for keeping accurate timers is to calculate the amount of seconds left each tick based on the current time and the start time rather than simply setting up a seconds variable that you decrement by 1 each tick. This helps prevent issues that occur if the interval is deprioritized by other process running in the event loop or if the user switches to a different tab in their browser.
