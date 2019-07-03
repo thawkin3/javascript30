@@ -86,7 +86,6 @@
         }
 
         function bonk(e) {
-          console.log(e.isTrusted);
           if (!e.isTrusted) { return; } // cheater!
           score++;
           this.parentNode.classList.remove('up');
