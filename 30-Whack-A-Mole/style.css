@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  padding: 0;
+  padding: 2rem;
   margin: 0;
   font-family: 'Amatic SC', cursive;
 }
@@ -18,7 +18,14 @@ h1 {
   text-align: center;
   font-size: 10rem;
   line-height: 1;
-  margin-bottom: 0;
+  margin: 2rem auto;
+}
+
+.startButton {
+  display: block;
+  margin: auto;
+  padding: 10px 20px;
+  border-radius: 6px;
 }
 
 .score {
@@ -62,6 +69,7 @@ h1 {
   width: 100%;
   height: 100%;
   transition:all 0.4s;
+  cursor: pointer;
 }
 
 .hole.up .mole {
