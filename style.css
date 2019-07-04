@@ -1,0 +1,124 @@
+html,
+body {
+    background-color: #f6f7f9;
+    font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+body {
+    padding: 2rem;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+article,
+header,
+nav,
+main,
+section,
+footer {
+    display: block;
+}
+
+.container {
+    max-width: 60rem;
+    margin: auto;
+}
+
+header {
+    padding: 0 0 2rem 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+.introduction {
+    line-height: 1.5rem;
+}
+
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.project {
+    display: block;
+    width: 100%;
+}
+
+.project a {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0.1875rem 0.375rem 0px;
+    border-radius: 0.25rem;
+    background: #fff;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: #000;
+    transition: transform 0.1s linear 0s;
+}
+
+.project a:hover,
+.project a:focus {
+    transform: scale(1.05);
+    outline: none;
+}
+
+.content {
+    margin-left: 2rem;
+    flex: 1;
+}
+
+.title {
+    margin-top: 0;
+}
+
+.img {
+    order: -1;
+    max-width: 100%;
+}
+
+.footer {
+    text-align: right;
+    text-transform: uppercase;
+    margin: 2rem 0;
+}
+
+.footer p {
+    margin: 0;
+}
+
+@media (max-width: 767px) {
+    .img {
+        width: 6rem;
+    }
+}
+
+@media (max-width: 479px) {
+    .project a {
+        flex-direction: column;
+    }
+
+    .img {
+        margin-bottom: 1rem;
+        display: block;
+        width: 100%;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+}
+
+
