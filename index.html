@@ -10,11 +10,11 @@
         <meta name="keywords" content="javascript30, web portfolio, hire me, web developer, UI developer, software engineer, JavaScript, vanilla js, HTML5, CSS3" />
         <meta name="author" content="Tyler Hawkins" />
         <!-- Google+ -->
-        <meta itemprop="name" content="Tyler Hawkins - JavaScript30">
+        <meta itemprop="name" content="Tyler Hawkins - JavaScript30" />
         <meta itemprop="description" content="Tyler Hawkins completed the JavaScript30 challenge. View his solutions here!" />
         <meta itemprop="image" content="http://tylerhawkins.info/201R/Images/Profile.jpeg" />
         <!-- Twitter -->
-        <meta name="twitter:title" content="Tyler Hawkins - JavaScript30">
+        <meta name="twitter:title" content="Tyler Hawkins - JavaScript30" />
         <meta name="twitter:description" content="Tyler Hawkins completed the JavaScript30 challenge. View his solutions here!" />
         <meta name="twitter:image:src" content="http://tylerhawkins.info/201R/Images/Profile.jpeg" />
         <!-- Open Graph data -->
@@ -32,7 +32,8 @@
     <body>
         <header class="container">
             <h1>JavaScript30 Challenge Solutions</h1>
-            <p class="introduction">I completed the JavaScript30 challenge from Wes Bos starting June 3, 2019 and ending July 3, 2019.
+            <p class="introduction">I completed the <a href="https://javascript30.com/">JavaScript30 challenge from
+                Wes Bos</a> starting June 3, 2019 and ending July 3, 2019.
                 This was a lot of fun! A lot of the solutions that he presents in the videos are more like proof of
                 concept apps rather than production-ready apps, so I tried to take each one and improve on it.
                 I added in things like accessibility, mobile responsiveness, keyboard-only navigation, touch events,
@@ -49,7 +50,11 @@
                     <a href="./01-JavaScript-Drum-Kit/">
                         <div class="content">
                             <h2 class="title">Day 1: JavaScript Drum Kit</h2>
-                            <p class="description">Description goes here. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
+                            <p class="takeaways"><b>Takeaways: </b>Be sure to note the differences between keydown,
+                                keyup, and keypress. If using keydown, the event continues to fire multiple times if
+                                the user holds the key down, so you need to be aware of that and account for that if
+                                needed. I disabled the key after the initial keydown and then re-enabled it on keyup
+                                to avoid the sound being played a million times.</p>
                         </div>
                         <img class="img" src="./assets/Day1.png" alt="Day 1: JavaScript Drum Kit" />
                     </a>
@@ -58,7 +63,9 @@
                     <a href="./02-JS-and-CSS-Clock/">
                         <div class="content">
                             <h2 class="title">Day 2: JS and CSS Clock</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b><code>transform-origin</code> is useful for
+                                controlling where the transform takes place. The default is 50%, or in the middle
+                                of the element, and 0% or 100% puts the origin at one of the ends.</p>
                         </div>
                         <img class="img" src="./assets/Day2.png" alt="Day 2: JS and CSS Clock" />
                     </a>
@@ -67,7 +74,14 @@
                     <a href="./03-CSS-Variables/">
                         <div class="content">
                             <h2 class="title">Day 3: CSS Variables</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Range and color input styles vary from browser to
+                                browser, so be sure to test everywhere you plan on supporting. <code>element.dataset</code> is
+                                supported in IE11+, but <code>element.getAttribute</code> is supported
+                                everywhere. <code>filter</code> is a neat CSS property for applying various
+                                graphical effects, but it's newer so it isn't supported in old browsers. If you are
+                                using your mouse, the <code>change</code> event fires on range inputs when you've let
+                                go (so on <code>mouseup</code>), but the <code>input</code> event fires anytime the
+                                input changes, even while you are holding the click and dragging.</p>
                         </div>
                         <img class="img" src="./assets/Day3.png" alt="Day 3: CSS Variables" />
                     </a>
@@ -76,7 +90,15 @@
                     <a href="./04-Array-Cardio-Day-1/">
                         <div class="content">
                             <h2 class="title">Day 4: Array Cardio Day 1</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Know your array helpers. DOM APIs
+                                like <code>querySelectorAll</code> return a collection of nodes (in this case, DOM
+                                elements) in a <code>NodeList</code>, which is somewhat similar to an array but
+                                doesn't have all the methods that the <code>Array</code> prototype does. For
+                                example, you can't call <code>reduce</code> on a <code>NodeList</code>. You
+                                first need to convert the <code>NodeList</code> to an array, which can be done
+                                with <code>Array.from()</code>. <code>reduce()</code> is an efficient way to
+                                combine a <code>map()</code> and <code>filter()</code> so that you don't have to
+                                loop through the array twice.</p>
                         </div>
                         <img class="img" src="./assets/Day4.png" alt="Day 4: Array Cardio Day 1" />
                     </a>
@@ -85,7 +107,15 @@
                     <a href="./05-Flex-Panel-Gallery/">
                         <div class="content">
                             <h2 class="title">Day 5: Flex Panel Gallery</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Flexbox is great for positioning elements!
+                                Transitions look even cooler when you use a cubic-bezier timing function. The
+                                transitionend event is only helpful if you can avoid having the transition called
+                                multiple times. For example, the panels grow and shrink in this demo, so unless
+                                you disable the clicking during the transition, you can get into a weird state
+                                if someone clicks multiple times. I solved the problem with CSS transitions alone,
+                                and you can see if you click on a panel rapidly it is handled well. You can include
+                                orientation specific CSS on mobile devices using media queries. In my case, I only
+                                show the panels when the device is in landscape orientation.</p>
                         </div>
                         <img class="img" src="./assets/Day5.png" alt="Day 5: Flex Panel Gallery" />
                     </a>
@@ -94,7 +124,11 @@
                     <a href="./06-Type-Ahead/">
                         <div class="content">
                             <h2 class="title">Day 6: Type Ahead</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>When using the fetch API, the first thing you
+                                need to do is transform the data with the <code>.json()</code> method. Autocomplete
+                                dropdowns take a lot of work to be accessible. They need to have proper ARIA roles
+                                and attributes, they need to show hover and focus indicators, and they need to be
+                                accessible for keyboard-only users.</p>
                         </div>
                         <img class="img" src="./assets/Day6.png" alt="Day 6: Type Ahead" />
                     </a>
@@ -103,7 +137,17 @@
                     <a href="./07-Array-Cardio-Day-2/">
                         <div class="content">
                             <h2 class="title">Day 7: Array Cardio Day 2</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Know your array
+                                helpers. <code>some</code> returns <code>true</code> if at least one element in
+                                the array meets the test function's criteria or <code>false</code> if none of the
+                                elements meet the test function's
+                                criteria. <code>every</code> returns <code>true</code> if all the elements in the
+                                array meet the test function's criteria or <code>false</code> if even one element
+                                doesn't meet the test function's criteria. <code>find</code> returns the first
+                                element that meets the test function's criteria or returns <code>undefined</code> if
+                                none of the elements meet the test function's criteria. <code>findIndex</code> returns
+                                the index of the first element that meets the test function's criteria or -1 if none
+                                of the elements meet the test function's criteria.</p>
                         </div>
                         <img class="img" src="./assets/Day7.png" alt="Day 7: Array Cardio Day 2" />
                     </a>
@@ -112,7 +156,13 @@
                     <a href="./08-Fun-with-HTML5-Canvas/">
                         <div class="content">
                             <h2 class="title">Day 8: Fun with HTML5 Canvas</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Drawing on a canvas is relatively simple. If you
+                                change the canvas's <code>width</code> attribute, the canvas clears itself. On a
+                                device that uses a mouse, the drawing functionality can be achieved with mouse
+                                events like <code>mousedown</code>, <code>mousemove</code>, <code>mouseup</code>,
+                                and <code>mouseout</code>. In order to make the drawing functionality work on touch
+                                screen devices, you must implement the corresponding touch events,
+                                like <code>touchstart</code>, <code>touchmove</code>, and <code>touchend</code>.</p>
                         </div>
                         <img class="img" src="./assets/Day8.png" alt="Day 8: Fun with HTML5 Canvas" />
                     </a>
@@ -121,7 +171,11 @@
                     <a href="./09-Console-Tricks/">
                         <div class="content">
                             <h2 class="title">Day 9: Console Tricks</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>There are many more ways to write data to the
+                                console than just with <code>console.log</code>! You can do string interpolation
+                                with <code>%s</code>, but template literals make that feature a little less exciting.
+                                You can style your message with <code>%c</code>, which is pretty neat. Other useful
+                                methods are <code>warn</code>, <code>error</code>, <code>info</code>, <code>assert</code>, <code>clear</code>, <code>dir</code>, <code>group</code>/<code>groupCollapsed</code>/<code>groupEnd</code>, <code>count</code>, <code>time</code>/<code>timeEnd</code>, and <code>table</code>.</p>
                         </div>
                         <img class="img" src="./assets/Day9.png" alt="Day 9: Console Tricks" />
                     </a>
@@ -130,7 +184,12 @@
                     <a href="./10-Hold-Shift-and-Check-Checkboxes/">
                         <div class="content">
                             <h2 class="title">Day 10: Hold Shift and Check Checkboxes</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Shift-clicking to select multiple boxes is a 
+                                eally nice feature to help make the user experience better when dealing with long
+                                lists. When implementing this functionality you need to handle both the selecting
+                                and deselecting of multiple checkboxes. It's important that inputs have labels on
+                                them so that both the checkbox itself and the label text are clickable. You can
+                                disable text highlighting with the CSS rule <code>user-select: none</code>.</p>
                         </div>
                         <img class="img" src="./assets/Day10.png" alt="Day 10: Hold Shift and Check Checkboxes" />
                     </a>
@@ -139,7 +198,8 @@
                     <a href="./11-Custom-Video-Player/">
                         <div class="content">
                             <h2 class="title">Day 11: Custom Video Player</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>A lot goes into building a custom HTML5 video
+                                player in order to make it accessible and keyboard navigable.</p>
                         </div>
                         <img class="img" src="./assets/Day11.png" alt="Day 11: Custom Video Player" />
                     </a>
@@ -148,7 +208,9 @@
                     <a href="./12-Key-Sequence-Detection/">
                         <div class="content">
                             <h2 class="title">Day 12: Key Sequence Detection</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Nothing too exciting here. Key loggers are
+                                pretty simply to make, just listen to the <code>keyup</code> event and record the
+                                event's <code>key</code> or <code>keyCode</code> value.</p>
                         </div>
                         <img class="img" src="./assets/Day12.png" alt="Day 12: Key Sequence Detection" />
                     </a>
@@ -157,7 +219,19 @@
                     <a href="./13-Slide-in-on-Scroll/">
                         <div class="content">
                             <h2 class="title">Day 13: Slide in on Scroll</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Introducing images or other content with subtle
+                                animations can be a nice touch to your website when done properly. When handling
+                                scroll events (or any event that fires repeatedly over a short period of time),
+                                you can choose to debounce or throttle your function so that it runs less
+                                frequently. A debounced function sets up a timer that gets reset every time the
+                                function is called, so your wrapped function only executes once the timer has been
+                                able to fully run. A throttled function on the other hand simply limits how often
+                                the wrapped function can be called and does not reset its internal timer when the
+                                function is called repeatedly. For example, if you are listening to the scroll
+                                event with a throttled function that is limited to run every 200ms, and you
+                                scrolled non-stop for about one second, the throttled function would be called 5
+                                times. A debounced function would have only been called once, 200ms after you had
+                                stopped scrolling.</p>
                         </div>
                         <img class="img" src="./assets/Day13.png" alt="Day 13: Slide in on Scroll" />
                     </a>
@@ -166,7 +240,17 @@
                     <a href="./14-JavaScript-References-vs-Copying/">
                         <div class="content">
                             <h2 class="title">Day 14: JavaScript References vs. Copying</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Numbers, strings, and booleans are passed by
+                                copy (or by value). Arrays and objects are passed by reference, so you need to be
+                                sure to actually make a copy of the array or object if you want to modify the copy
+                                without also modifying the original. You can make copies of arrays with methods
+                                like <code>slice</code>, <code>concat</code>, <code>Array.from</code>, or the
+                                spread operator (<code>...</code>). You can make copies of objects with methods
+                                like <code>Object.assign</code> or the spread operator (<code>...</code>). One
+                                thing to note is that all these methods make shallow clones, meaning that they
+                                only make copies one level deep. So if you have a deeply nested object, you make a
+                                copy of it, and then you modify a value on the copied object that is on the second
+                                level or deeper, it will also modify the value of the original object too.</p>
                         </div>
                         <img class="img" src="./assets/Day14.png" alt="Day 14: JavaScript References vs. Copying" />
                     </a>
@@ -175,7 +259,11 @@
                     <a href="./15-LocalStorage/">
                         <div class="content">
                             <h2 class="title">Day 15: LocalStorage</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Local storage is a key-value store that only
+                                supports strings. If you want to store arrays or objects, you need to stringify
+                                them with <code>JSON.stringify</code> and then store that value. When retrieving
+                                the value, you can then call <code>JSON.parse</code> to turn your value back into
+                                an array or object.</p>
                         </div>
                         <img class="img" src="./assets/Day15.png" alt="Day 15: LocalStorage" />
                     </a>
@@ -184,7 +272,16 @@
                     <a href="./16-Mouse-Move-Shadow/">
                         <div class="content">
                             <h2 class="title">Day 16: Mouse Move Shadow</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>When calculating the X and Y coordinates, there
+                                are a lot of things to take into
+                                account. <code>HTMLElement.offsetHeight</code> and <code>HTMLElement.offsetWidth</code> are
+                                the element's layout height and
+                                width. <code>HTMLElement.offsetLeft</code> and <code>HTMLElement.offsetTop</code> are
+                                the number of pixels that the upper left corner (or top, respectively) of the current
+                                element is offset to the left (or top, respectively) within
+                                the <code>HTMLElement.offsetParent</code> node. <code>event.target.offsetX</code> and <code>event.target.offsetY</code> from
+                                the <code>MouseEvent</code> are the offset between the mouse pointer and the left
+                                (or top, respectively) edge of the target element.</p>
                         </div>
                         <img class="img" src="./assets/Day16.png" alt="Day 16: Mouse Move Shadow" />
                     </a>
@@ -193,7 +290,14 @@
                     <a href="./17-Sort-Without-Articles/">
                         <div class="content">
                             <h2 class="title">Day 17: Sort without Articles</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Nothing too exciting here. RegEx is a useful
+                                thing to know and can be used in a string's <code>replace</code> method. Strings
+                                can be compared with operators like <code>&lt;</code> and <code>&gt;</code>. When doing
+                                    string comparisons, earlier letters like "c" are evaluated as being "less than"
+                                    later letters like "t". Uppercase letters are evaluated as being "less than"
+                                    lowercase letters (meaning uppercase letters come first). So, to do an impartial
+                                    comparison, it can be useful to convert your strings to all lowercase or all
+                                    uppercase before doing the comparison.</p>
                         </div>
                         <img class="img" src="./assets/Day17.png" alt="Day 17: Sort without Articles" />
                     </a>
@@ -202,7 +306,13 @@
                     <a href="./18-Adding-Up-Times-with-Reduce/">
                         <div class="content">
                             <h2 class="title">Day 18: Adding up Times with Reduce</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b><code>NodeLists</code> are not the same
+                                as <code>Arrays</code> and have different methods on their prototype. You can
+                                easily create an array from a <code>NodeList</code> using
+                                the <code>Array.from</code> method. <code>reduce</code> is a handy method to loop
+                                through your array and transform it into another data type, like an object or a
+                                number. When dealing with large data sets, you want to avoid looping over the
+                                data multiple times, as that is not very efficient.</p>
                         </div>
                         <img class="img" src="./assets/Day18.png" alt="Day 18: Adding up Times with Reduce" />
                     </a>
@@ -211,7 +321,27 @@
                     <a href="https://tylerhawkins.info/javascript30/19-Webcam-Fun/">
                         <div class="content">
                             <h2 class="title">Day 19: Webcam Fun</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Creating filters is fun! Canvases and videos
+                                can be used to display live video streams as well to take photos. Image data on
+                                a canvas can be retrieved, manipulated, and returned to create some neat effects.
+                                The <code>getUserMedia</code> API is relatively young and has gone through some
+                                changes in the past few years, so you have to include quite a lot of fallback code
+                                to handle things properly in older browsers. For
+                                example, <code>navigator.getUserMedia</code> is now found
+                                at <code>navigator.mediaDevices.getUserMedia</code>, and this method returns a
+                                Promise rather than using callbacks. To attach the media stream to the video
+                                element, you used to be able to use <code>createObjectURL</code>, but that method
+                                is being deprecated in favor of simply set the value of <code>video.srcObject</code> to
+                                the media stream. In order to make this demo work on mobile devices, you also have
+                                to set a few more attributes on the video
+                                element: <code>muted</code>, <code>autoplay</code>, and <code>playsinline</code>. This
+                                keeps the video in the context of your webpage instead of breaking out into the
+                                mobile device's own native video player.</p>
+                            <p class="note"><b>Note: </b>Access to the user's camera requires the webpage to be
+                                served over HTTPS, so if your site does not have an SSL Certificate (like mine),
+                                you can still visit the site with a url that begins with <code>https://</code>, you'll
+                                just get a warning from your browser that the site is not secure. You can then
+                                choose to still visit the site.</p>
                         </div>
                         <img class="img" src="./assets/Day19.png" alt="Day 19: Webcam Fun" />
                     </a>
@@ -220,7 +350,13 @@
                     <a href="https://tylerhawkins.info/javascript30/20-Speech-Detection/">
                         <div class="content">
                             <h2 class="title">Day 20: Speech Detection</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>The Speech Recognition API is an experimental
+                                technology that doesn't have wide browser support yet. Still, it's a neat concept.</p>
+                            <p class="note"><b>Note: </b>Access to the user's microphone requires the webpage to
+                                be served over HTTPS, so if your site does not have an SSL Certificate (like mine),
+                                you can still visit the site with a url that begins with <code>https://</code>, you'll
+                                just get a warning from your browser that the site is not secure. You can then
+                                choose to still visit the site.</p>
                         </div>
                         <img class="img" src="./assets/Day20.png" alt="Day 20: Speech Detection" />
                     </a>
@@ -229,7 +365,17 @@
                     <a href="https://tylerhawkins.info/javascript30/21-Geolocation/">
                         <div class="content">
                             <h2 class="title">Day 21: Geolocation</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>The Geolocation API can retrieve more data
+                                than just the user's latitude and longitude. On mobile devices, it can also give
+                                you the speed and the heading (direction) of the device when it's moving. The
+                                location data isn't always super accurate and can be gathered in a few different
+                                ways (this list goes from most accurate to least accurate): GPS, a WiFi positioning
+                                system, triangulation with your mobile network, or using the device's IP address.</p>
+                            <p class="note"><b>Note: </b>Access to the user's location requires the webpage to be
+                                served over HTTPS, so if your site does not have an SSL Certificate (like mine),
+                                you can still visit the site with a url that begins with <code>https://</code>, you'll
+                                just get a warning from your browser that the site is not secure. You can then
+                                choose to still visit the site.</p>
                         </div>
                         <img class="img" src="./assets/Day21.png" alt="Day 21: Geolocation" />
                     </a>
@@ -238,7 +384,10 @@
                     <a href="./22-Follow-Along-Link-Highlighter/">
                         <div class="content">
                             <h2 class="title">Day 22: Follow Along Link Highlighter</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b><code>Element.getBoundingClientRect</code> returns
+                                the size of an element and its position relative to the viewport (not its position
+                                relative to the document if you've scrolled). If you want to take into account scroll
+                                position as well, you can use <code>window.scrollY</code> or <code>window.scrollX</code>.</p>
                         </div>
                         <img class="img" src="./assets/Day22.png" alt="Day 22: Follow Along Link Highlighter" />
                     </a>
@@ -247,7 +396,10 @@
                     <a href="./23-Speech-Synthesis/">
                         <div class="content">
                             <h2 class="title">Day 23: Speech Synthesis</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Speech Synthesis Utterance is a pretty cool API.
+                                It can be used to read text to you out loud in various different voices. The API is
+                                still considered experimental, but it does have decent support from most major
+                                browsers. IE doesn't support it though (surprise, surprise).</p>
                         </div>
                         <img class="img" src="./assets/Day23.png" alt="Day 23: Speech Synthesis" />
                     </a>
@@ -256,7 +408,9 @@
                     <a href="./24-Sticky-Nav/">
                         <div class="content">
                             <h2 class="title">Day 24: Sticky Nav</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Implementing a sticky nav and other subtle
+                                transitions and animations on your web page can make it go from boring to awesome,
+                                if done properly. The scale effect is a nice touch.</p>
                         </div>
                         <img class="img" src="./assets/Day24.png" alt="Day 24: Sticky Nav" />
                     </a>
@@ -265,7 +419,16 @@
                     <a href="./25-Event-Capture-Propagation-Bubbling-and-Once/">
                         <div class="content">
                             <h2 class="title">Day 25: Event Capture, Propagation, Bubbling, and Once</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Events bubble up the DOM by default, but you
+                                can make then capture down the DOM by passing an option when adding your event
+                                listener. When removing event listeners, you should be as specific as you can be,
+                                so if you added an event listener with a method and some config options, you
+                                should remove it with that same method and config options. If you stop the event
+                                propagation, it stops being handled on the additional elements that it would have
+                                normally bubbled up or captured down to. The <code>once</code> option is a new
+                                option that allows you to have the event handler run just once and then remove
+                                the event listener on that element so that it doesn't run again unless you re-add
+                                the event listener again.</p>
                         </div>
                         <img class="img" src="./assets/Day25.png" alt="Day 25: Event Capture, Propagation, Bubbling, and Once" />
                     </a>
@@ -274,7 +437,10 @@
                     <a href="./26-Stripe-Follow-Along-Nav/">
                         <div class="content">
                             <h2 class="title">Day 26: Stripe Follow Along Nav</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Follow-along nav animations are difficult to
+                                implement, especially when you try to take into account hovering with a mouse,
+                                focusing/tabbing with a keyboard, and mobile touch events. This example isn't
+                                perfect, but it's a nice proof of concept.</p>
                         </div>
                         <img class="img" src="./assets/Day26.png" alt="Day 26: Stripe Follow Along Nav" />
                     </a>
@@ -283,7 +449,14 @@
                     <a href="./27-Click-and-Drag-to-Scroll/">
                         <div class="content">
                             <h2 class="title">Day 27: Click and Drag to Scroll</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b><code>Element.scrollLeft</code> is the amount
+                                of pixels that an element has been scrolled from the left. <code>Event.pageX</code> is
+                                the X coordinate of the event (mousemove in this case) relative to the
+                                document. <code>Event.clientX</code> is the X coordinate of the event (mousemove
+                                in this case) relative to the viewport. These two numbers would be different if
+                                you had horizontally scrolled on the entire page (and same
+                                for <code>Event.pageY</code> and <code>Event.clientY</code> when the page has
+                                been vertically scrolled).</p>
                         </div>
                         <img class="img" src="./assets/Day27.png" alt="Day 27: Click and Drag to Scroll" />
                     </a>
@@ -292,7 +465,10 @@
                     <a href="./28-Video-Speed-Controller/">
                         <div class="content">
                             <h2 class="title">Day 28: Video Speed Controller</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>Mouse coordinates are calculated a little
+                                differently than touch coordinates. Likewise, mouse events use different event
+                                listeners than touch events
+                                (ex. <code>mousemove</code> vs. <code>touchmove</code>).</p>
                         </div>
                         <img class="img" src="./assets/Day28.png" alt="Day 28: Video Speed Controller" />
                     </a>
@@ -301,7 +477,12 @@
                     <a href="./29-Countdown-Timer/">
                         <div class="content">
                             <h2 class="title">Day 29: Countdown Timer</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>A really neat trick for keeping accurate
+                                timers is to calculate the amount of seconds left each tick based on the current
+                                time and the start time rather than simply setting up a seconds variable that you
+                                decrement by 1 each tick. This helps prevent issues that occur if the interval
+                                is deprioritized by other process running in the event loop or if the user switches
+                                to a different tab in their browser.</p>
                         </div>
                         <img class="img" src="./assets/Day29.png" alt="Day 29: Countdown Timer" />
                     </a>
@@ -310,7 +491,10 @@
                     <a href="./30-Whack-A-Mole/">
                         <div class="content">
                             <h2 class="title">Day 30: Whack-a-Mole</h2>
-                            <p class="description">Description</p>
+                            <p class="takeaways"><b>Takeaways: </b>The <code>isTrusted</code> read-only property
+                                of the <code>Event</code> interface is a boolean that is true when the event was
+                                generated by a user action, and false when the event was created or modified by a
+                                script or dispatched via <code>EventTarget.dispatchEvent()</code>.</p>
                         </div>
                         <img class="img" src="./assets/Day30.png" alt="Day 30: Whack-a-Mole" />
                     </a>
